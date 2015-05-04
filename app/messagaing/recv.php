@@ -1,56 +1,54 @@
-<?php
-
-namespace messaging;
-
-require_once __DIR__ . '/libs/vendor/autoload.php';
-
-use PhpAmqpLib\Connection\AMQPConnection;
-use ninja\repositories\ClientRepository;
-
-class recv {
-	// Default werte:
+ <?php
+	require_once __DIR__ . '/libs/vendor/autoload.php';
+	use PhpAmqpLib\Connection\AMQPConnection;
+use App\Ninja\Repositories\ClientRepository;
 	// Username: guest
 	// password: guest
 	//
-	// Ã„nderung (in der Konsole eingeben):
+	// €nderung (in der Konsole eingeben):
 	// rabbitmqctl delete_user guest
 	// rabbitmqctl add_user ninja steffens => bedeutet, dass username = ninja und pw = steffens
 	//
 	//
 	// create connection
-	protected $clientRepo;
-	function constructRepo() {
-		if (is_null ( $this->clientRepo )) {
-			$this->clientRepo = new ClientRepository ();
-		}
+	echo'1. Datei geladen!!!';
+	$connection = new AMQPConnection ( '141.22.29.97', '5672', 'invoice', 'invoice' ); // host = host auf dem der Broker lŠuft
+	$channel = $connection->channel ();
+	echo'2. Channel erstellt!!!';
+	
+	$clientRepo;
+	echo'3. ClientRepo wird geprŸft!!!';
+	if($clientRepo = null){
+		echo'3.1 ClientRepo muss erstellt werden!!!';
+		$clientRepo = new ClientRepository();
+		echo'3.2 ClientRepo wurde erstellt!!!';
 	}
-	function recieve() {
-		$connection = new AMQPConnection ( '141.22.29.97', '5672', 'invoice', 'invoice' ); // host = host auf dem der Broker lÃ¤uft
-		$channel = $connection->channel ();
-		
-		// declaer messagequeue
-		$channel->queue_declare ( 'invoice', false, false, false, false );
-		
-		echo ' [*] Waiting for messages. To exit press CTRL+C', "\n";
-		
-		// wait for messages
-		$callback = function ($msg) {
-			$data = explode ( " ", $msg );
-			
-			$data = $this->createClientArrray ( $data );
-			$this->clientRepo->save ( null, $data, null );
-		};
-		
-		$channel->basic_consume ( 'invoice', '', false, true, false, false, $callback );
-		
-		while ( count ( $channel->callbacks ) ) {
-			$channel->wait ();
+	echo'4. declare messagequeue !!!';
+	$channel->queue_declare ( 'invoice', false, false, false, false );
+	
+	echo ' 5. Waiting for messages. To exit press CTRL+C', "\n";
+	
+	// wait for messages
+	$callback = function ($msg) {
+		$clientRepo;
+		if($clientRepo = null){
+			$clientRepo = new ClientRepository();
 		}
-		
-		// close connection
-		$channel->close ();
-		$connection->close ();
+		$data = explode(" ", $msg);
+		$clientRepo->save(null, $data);
+		echo " [x] Received ", $msg->body, "\n";
+	};
+	
+	$channel->basic_consume ( 'invoice', '', false, true, false, false, $callback );
+	
+	while ( count ( $channel->callbacks ) ) {
+		$channel->wait ();
 	}
+	
+	// close connection
+	$channel->close ();
+	$connection->close ();
+	
 	function createClientArrray($data) {
 		$clientData = array (
 				'name' >= $data ( 0 ),
@@ -61,15 +59,14 @@ class recv {
 				'state' >= $data ( 5 ),
 				'postal_code' >= $data ( 6 ),
 				'country_id' >= $data ( 7 ),
-				
+	
 				'contact' >= $data ( 8 ),
 				'email' >= $data ( 9 ),
 				'first_name' >= $data ( 10 ),
 				'last_name' >= $data ( 11 ),
-				'phone' >= $data ( 12 ) 
+				'phone' >= $data ( 12 )
 		);
 		return $clientData;
 	}
-}
-?>
-
+	
+	?>
