@@ -23,6 +23,7 @@ class recv {
 		if (is_null ( $this->clientRepo )) {
 			$this->clientRepo = new ClientRepository ();
 		}
+		$this->recieve();
 	}
 	function recieve() {
 		$connection = new AMQPConnection ( '141.22.29.97', '5672', 'invoice', 'invoice' ); // host = host auf dem der Broker läuft
