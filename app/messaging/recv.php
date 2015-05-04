@@ -21,8 +21,10 @@ use ninja\repositories\ClientRepository;
 
 		echo ' [*] RECV geladen';
 		$clientRepo;
+		echo 'null check';
 		if (is_null ( $this->clientRepo )) {
-			$clientRepo = new ClientRepository ();
+			echo 'repo wird erstellt';
+			$this->$clientRepo = new ClientRepository ();
 			echo '$clientRepo geladen !!' ;
 		}
 
