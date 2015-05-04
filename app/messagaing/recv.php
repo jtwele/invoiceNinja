@@ -1,7 +1,16 @@
- <?php
+<?php
+
+	namespace App\messaging;
+
+	var_dump(file_exists(App/Ninja/Repositories/ClientRepository.php));
+
 	require_once __DIR__ . '/libs/vendor/autoload.php';
+	require_once ("App/Ninja/Repositories/ClientRepository.php");
+//require_once ("");
+//
 	use PhpAmqpLib\Connection\AMQPConnection;
-use App\Ninja\Repositories\ClientRepository;
+	use App\Ninja\Repositories\ClientRepository;
+
 	// Username: guest
 	// password: guest
 	//
@@ -16,9 +25,9 @@ use App\Ninja\Repositories\ClientRepository;
 	$channel = $connection->channel ();
 	echo'2. Channel erstellt!!!';
 	
-	$clientRepo;
+	$clientRepo = null;
 	echo'3. ClientRepo wird geprüft!!!';
-	if($clientRepo = null){
+	if(is_null($clientRepo)){
 		echo'3.1 ClientRepo muss erstellt werden!!!';
 		$clientRepo = new ClientRepository();
 		echo'3.2 ClientRepo wurde erstellt!!!';
