@@ -7,7 +7,7 @@ require_once __DIR__ . '/libs/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPConnection;
 use ninja\repositories\ClientRepository;
 
-class recv {
+
 	// Default werte:
 	// Username: guest
 	// password: guest
@@ -18,16 +18,17 @@ class recv {
 	//
 	//
 	// create connection
-	protected $clientRepo;
-	function constructRepo() {
+
+		echo ' [*] RECV geladen';
+		$clientRepo;
 		if (is_null ( $this->clientRepo )) {
-			$this->clientRepo = new ClientRepository ();
+			$clientRepo = new ClientRepository ();
+			echo '$clientRepo geladen !!' ;
 		}
-		$this->recieve();
-	}
-	function recieve() {
+
 		$connection = new AMQPConnection ( '141.22.29.97', '5672', 'invoice', 'invoice' ); // host = host auf dem der Broker läuft
 		$channel = $connection->channel ();
+		echo 'Verbindung aufgebaut';
 		// declaer messagequeue
 		$channel->queue_declare ( 'invoice', false, false, false, false );		
 		echo ' [*] Waiting for messages. To exit press CTRL+C', "\n";
@@ -48,7 +49,7 @@ class recv {
 		// close connection
 		$channel->close ();
 		$connection->close ();
-	}
+	
 	function createClientArrray($data) {
 		$clientData = array (
 				'name' >= $data ( 0 ),
@@ -68,6 +69,6 @@ class recv {
 		);
 		return $clientData;
 	}
-}
+
 ?>
 
