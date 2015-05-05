@@ -1,7 +1,15 @@
 <?php
 require_once __DIR__ . '/libs/vendor/autoload.php';
-require_once('/var/www/ninja/app/Ninja/Repositories/*.php');
-require_once('/var/www/ninja/app/Models/*.php');
+
+foreach (glob("/var/www/ninja/app/Ninja/Repositories/*.php") as $filename)
+{
+    include_once $filename;
+}
+
+foreach (glob("/var/www/ninja/app/Models/*.php") as $filename)
+{
+    include_once $filename;
+}
 use PhpAmqpLib\Connection\AMQPConnection;
 use App\Ninja\Repositories\ClientRepository as Repo;
 
