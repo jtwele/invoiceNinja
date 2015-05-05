@@ -10,32 +10,25 @@ use PhpAmqpLib\Connection\AMQPConnection;
 use App\Ninja\Repositories\ClientRepository as Repo;
 
 // create connection
-echo'1. Datei geladen!!!';
-$connection = new AMQPConnection ( '141.22.29.97', '5672', 'invoice', 'invoice' ); // host = host auf dem der Broker l�uft
+
+$connection = new AMQPConnection ( '141.22.29.97', '5672', 'invoice', 'invoice' );
 $channel = $connection->channel ();
-echo'2. Channel erstellt!!!';
-echo'4. declare messagequeue !!!';
 $channel->queue_declare ( 'invoice', false, false, false, false );
-echo ' 5. Waiting for messages. To exit press CTRL+C', "\n";
-
-
+echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 // wait for messages
 $callback = function ($msg) {
 
     $clientRepo = new Repo();
     echo " [x] Received ", $msg->body, "\n";
-    //$tmpMsg = $msg->body;
     $data = explode(" ", $msg->body);
-
-    for($i=0; $i < count($data); $i++)
-    {
-        echo $data[$i]."<br>";
+    createClientArrray($data);
+    for($i=0; $i < count($data); $i++){
+        echo $data[$i]."\n";
     }
 
 
     $clientRepo->save(null, $data);
-    echo " [x] Received ", $msg->body, "\n";
 };
 
 $channel->basic_consume ( 'invoice', '', false, true, false, false, $callback );
@@ -47,9 +40,9 @@ while ( count ( $channel->callbacks ) ) {
 // close connection
 $channel->close ();
 $connection->close ();
+/*
+function getRepoInstance(ClientRepository $clientRepo){
 
-function getRepoInstance(){
-    //ClientRepository $clientRepo;
     if(is_null($clientRepo)){
         echo'3.1 ClientRepo muss erstellt werden!!!';
         $clientRepo = new ClientRepository();
@@ -58,7 +51,7 @@ function getRepoInstance(){
 
     return repo;
 }
-
+*/
 function createClientArrray($data) {
     $clientData = array (
         'name' >= $data ( 0 ),
