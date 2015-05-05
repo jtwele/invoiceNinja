@@ -13,6 +13,7 @@
 /vendor
 /node_modules
 .env
+.DS_Store
 /.DS_Store
 /Thumbs.db
 .env.development.php
