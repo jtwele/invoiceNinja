@@ -19,15 +19,15 @@ echo ' 5. Waiting for messages. To exit press CTRL+C', "\n";
 $callback = function ($msg) {
 
     $clientRepo = new Repo();
-    $tmpMsg = (string)$msg;
-    $data = explode(" ", $tmpMsg);
-    for($i=0; $i < count($data); $i++)
-    {
-        echo $data[$i]."<br>";
-    }
+    //$tmpMsg = (string)$msg;
+    //$data = explode(" ", $tmpMsg);
+    //for($i=0; $i < count($data); $i++)
+    //{
+    //    echo $data[$i]."<br>";
+    //}
 
 
-    $clientRepo->save(null, $data);
+    $clientRepo->save(null, $msg);
     echo " [x] Received ", $msg->body, "\n";
 };
 
