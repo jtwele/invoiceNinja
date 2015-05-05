@@ -14,8 +14,8 @@ use App\Ninja\Repositories\ClientRepository;
 //
 // create connection
 echo'1. Datei geladen!!!';
-//$connection = new AMQPConnection ( '141.22.29.97', '5672', 'invoice', 'invoice' ); // host = host auf dem der Broker l�uft
-//$channel = $connection->channel ();
+$connection = new AMQPConnection ( '141.22.29.97', '5672', 'invoice', 'invoice' ); // host = host auf dem der Broker l�uft
+$channel = $connection->channel ();
 echo'2. Channel erstellt!!!';
 
 $clientRepo = null;
