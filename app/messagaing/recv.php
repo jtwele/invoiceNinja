@@ -25,28 +25,9 @@ $callback = function ($msg) {
     echo '***********************************************';
     $data = explode(" ", $msg->body);
     echo var_dump($data);
-
     echo '***********************************************';
-    $clientData = array (
-        'name' => $data ( 0 ),
-        'id_number' => strval($data ( 1 )),
-        'work_phone' => strval($data ( 2 )),
-        'address1' => $data ( 3 ),
-        'city' => $data ( 4 ),
-        'state' => $data ( 5 ),
-        'postal_code' => strval($data ( 6 )),
-        'country_id' => $data ( 7 ),
-
-        'contact' => $data ( 8 ),
-        'email' => $data ( 9 ),
-        'first_name' => $data ( 10 ),
-        'last_name' => $data ( 11 ),
-        'phone' => strval($data ( 12 ))
-    );
-
-
-
-    echo var_dump($clientData);
+    $data = createClientArray($data);
+    echo var_dump($data);
     echo '***********************************************';
     for($i=0; $i < count($data); $i++){
         echo $data[$i]."\n";
@@ -80,21 +61,37 @@ function getRepoInstance(ClientRepository $clientRepo){
 
 
 function createClientArray($data) {
-    $clientData = array (
-        'name' => $data ( 0 ),
-        'id_number' => strval($data ( 1 )),
-        'work_phone' => strval($data ( 2 )),
-        'address1' => $data ( 3 ),
-        'city' => $data ( 4 ),
-        'state' => $data ( 5 ),
-        'postal_code' => strval($data ( 6 )),
-        'country_id' => $data ( 7 ),
 
-        'contact' => $data ( 8 ),
-        'email' => $data ( 9 ),
-        'first_name' => $data ( 10 ),
-        'last_name' => $data ( 11 ),
-        'phone' => strval($data ( 12 ))
+        $name = $data ( 0 );
+        $id_number = strval($data ( 1 ));
+        $work_phone = strval($data ( 2 ));
+        $address1 = $data ( 3 );
+        $city = $data ( 4 );
+        $state = $data ( 5 );
+        $postal_code = strval($data ( 6 ));
+        $country_id = $data ( 7 );
+
+        $contact = $data ( 8 );
+        $email = $data ( 9 );
+        $first_name = $data ( 10 );
+        $last_name = $data ( 11 );
+        $phone = strval($data ( 12 ));
+
+    $clientData = array (
+        'name' => $name,
+        'id_number' => $id_number,
+        'work_phone' => $work_phone,
+        'address1' => $address1,
+        'city' => $city,
+        'state' => $state,
+        'postal_code' => $postal_code,
+        'country_id' => $country_id,
+
+        'contact' => $contact,
+        'email' => $email,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+        'phone' => $phone
     );
     return $clientData;
 }
