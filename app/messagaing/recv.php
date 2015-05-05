@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/libs/vendor/autoload.php';
-
+require __DIR__.'/../bootstrap/autoload.php';
 
 foreach (glob("/var/www/ninja/vendor/composer/*.php") as $filename)
 {
