@@ -18,7 +18,8 @@ echo ' 5. Waiting for messages. To exit press CTRL+C', "\n";
 // wait for messages
 $callback = function ($msg) {
     $clientRepo = new Repo();
-    $data = explode(" ", $msg);
+    $tmpMsg = strval($msg);
+    $data = explode(" ", $tmpMsg);
     for($i=0; $i < count($data); $i++)
     {
         echo $data[$i]."<br>";
