@@ -25,9 +25,28 @@ $callback = function ($msg) {
     echo '***********************************************';
     $data = explode(" ", $msg->body);
     echo var_dump($data);
+
     echo '***********************************************';
-    $data = createClientArray($data);
-    echo var_dump($data);
+    $clientData = array (
+        'name' => $data ( 0 ),
+        'id_number' => strval($data ( 1 )),
+        'work_phone' => strval($data ( 2 )),
+        'address1' => $data ( 3 ),
+        'city' => $data ( 4 ),
+        'state' => $data ( 5 ),
+        'postal_code' => strval($data ( 6 )),
+        'country_id' => $data ( 7 ),
+
+        'contact' => $data ( 8 ),
+        'email' => $data ( 9 ),
+        'first_name' => $data ( 10 ),
+        'last_name' => $data ( 11 ),
+        'phone' => strval($data ( 12 ))
+    );
+
+
+
+    echo var_dump($clientData);
     echo '***********************************************';
     for($i=0; $i < count($data); $i++){
         echo $data[$i]."\n";
