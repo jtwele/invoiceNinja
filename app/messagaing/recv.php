@@ -24,6 +24,7 @@ echo ' 5. Waiting for messages. To exit press CTRL+C', "\n";
 $callback = function ($msg) {
 
     $clientRepo = new Repo();
+    echo " [x] Received ", $msg->body, "\n";
     //$tmpMsg = (string)$msg;
     //$data = explode(" ", $tmpMsg);
     //for($i=0; $i < count($data); $i++)
