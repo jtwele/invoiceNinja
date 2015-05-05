@@ -21,8 +21,14 @@ $callback = function ($msg) {
 
     $clientRepo = new Repo();
     echo " [x] Received ", $msg->body, "\n";
+    ClientArray();
+
     $data = explode(" ", $msg->body);
-    createClientArrray($data);
+    echo var_dump($data);
+    $data = createClientArrray($data);
+    echo var_dump($data);
+    $data = createClientArrray($data);
+    echo var_dump($data);
     for($i=0; $i < count($data); $i++){
         echo $data[$i]."\n";
     }
@@ -52,7 +58,28 @@ function getRepoInstance(ClientRepository $clientRepo){
     return repo;
 }
 */
-function createClientArrray($data) {
+
+function clientArray() {
+    $clientData = array (
+        'name' >= null,
+        'id_number' >= null,
+        'work_phone' >= null,
+        'address1' >= null,
+        'city' >= null,
+        'state' >= null,
+        'postal_code' >= null,
+        'country_id' >= null,
+
+        'contact' >= null,
+        'email' >= null,
+        'first_name' >= null,
+        'last_name' >= null,
+        'phone' >= null
+    );
+    return $clientData;
+}
+
+function createClientArray($data) {
     $clientData = array (
         'name' >= $data ( 0 ),
         'id_number' >= strval($data ( 1 )),
