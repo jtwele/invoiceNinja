@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/libs/vendor/autoload.php';
 require_once '/var/www/ninja/bootstrap/autoload.php';
+require_once '/var/www/ninja/bootstrap/app.php';
 
 //foreach (glob("/var/www/ninja/vendor/composer/*.php") as $filename)
 //{
