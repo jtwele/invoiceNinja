@@ -20,20 +20,11 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 $callback = function ($msg) {
 
     $clientRepo = new Repo();
-    echo " [x] Received ", $msg->body, "\n";
-
-    echo '***********************************************';
     $data = explode(" ", $msg->body);
-    echo var_dump($data);
     echo '***********************************************';
     $data = createClientArray($data);
     echo var_dump($data);
     echo '***********************************************';
-    for($i=0; $i < count($data); $i++){
-        echo $data[$i]."\n";
-    }
-
-
     $clientRepo->save(null, $data);
 };
 
