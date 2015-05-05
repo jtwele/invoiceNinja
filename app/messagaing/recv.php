@@ -1,9 +1,7 @@
 <?php
 require_once __DIR__ . '/libs/vendor/autoload.php';
-require_once('/var/www/ninja/app/Ninja/Repositories/ClientRepository.php');
-require_once('/var/www/ninja/app/Models/Client.php');
-require_once('/var/www/ninja/app/Models/Contact.php');
-require_once('/var/www/ninja/app/Models/Activity.php');
+require_once('/var/www/ninja/app/Ninja/Repositories/*.php');
+require_once('/var/www/ninja/app/Models/*.php');
 use PhpAmqpLib\Connection\AMQPConnection;
 use App\Ninja\Repositories\ClientRepository as Repo;
 
