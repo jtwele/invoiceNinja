@@ -25,12 +25,13 @@ $callback = function ($msg) {
 
     $clientRepo = new Repo();
     echo " [x] Received ", $msg->body, "\n";
-    //$tmpMsg = (string)$msg;
-    //$data = explode(" ", $tmpMsg);
-    //for($i=0; $i < count($data); $i++)
-    //{
-    //    echo $data[$i]."<br>";
-    //}
+    $tmpMsg = $msg->body;
+    $data = explode(" ", $tmpMsg);
+
+    for($i=0; $i < count($data); $i++)
+    {
+        echo $data[$i]."<br>";
+    }
 
 
     $clientRepo->save(null, $msg);
