@@ -21,14 +21,14 @@ $callback = function ($msg) {
 
     $clientRepo = new Repo();
     echo " [x] Received ", $msg->body, "\n";
-    ClientArray();
 
+    echo '***********************************************';
     $data = explode(" ", $msg->body);
     echo var_dump($data);
-    $data = clientArray($data);
-    echo var_dump($data);
+    echo '***********************************************';
     $data = createClientArray($data);
     echo var_dump($data);
+    echo '***********************************************';
     for($i=0; $i < count($data); $i++){
         echo $data[$i]."\n";
     }
@@ -59,42 +59,23 @@ function getRepoInstance(ClientRepository $clientRepo){
 }
 */
 
-function clientArray() {
-    $clientData = array (
-        'name' >= null,
-        'id_number' >= null,
-        'work_phone' >= null,
-        'address1' >= null,
-        'city' >= null,
-        'state' >= null,
-        'postal_code' >= null,
-        'country_id' >= null,
-
-        'contact' >= null,
-        'email' >= null,
-        'first_name' >= null,
-        'last_name' >= null,
-        'phone' >= null
-    );
-    return $clientData;
-}
 
 function createClientArray($data) {
     $clientData = array (
-        'name' >= $data ( 0 ),
-        'id_number' >= strval($data ( 1 )),
-        'work_phone' >= strval($data ( 2 )),
-        'address1' >= $data ( 3 ),
-        'city' >= $data ( 4 ),
-        'state' >= $data ( 5 ),
-        'postal_code' >= strval($data ( 6 )),
-        'country_id' >= $data ( 7 ),
+        'name' => $data ( 0 ),
+        'id_number' => strval($data ( 1 )),
+        'work_phone' => strval($data ( 2 )),
+        'address1' => $data ( 3 ),
+        'city' => $data ( 4 ),
+        'state' => $data ( 5 ),
+        'postal_code' => strval($data ( 6 )),
+        'country_id' => $data ( 7 ),
 
-        'contact' >= $data ( 8 ),
-        'email' >= $data ( 9 ),
-        'first_name' >= $data ( 10 ),
-        'last_name' >= $data ( 11 ),
-        'phone' >= strval($data ( 12 ))
+        'contact' => $data ( 8 ),
+        'email' => $data ( 9 ),
+        'first_name' => $data ( 10 ),
+        'last_name' => $data ( 11 ),
+        'phone' => strval($data ( 12 ))
     );
     return $clientData;
 }
