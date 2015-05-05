@@ -62,36 +62,21 @@ function getRepoInstance(ClientRepository $clientRepo){
 
 function createClientArray($data) {
 
-        $name = $data ( 0 );
-        $id_number = strval($data ( 1 ));
-        $work_phone = strval($data ( 2 ));
-        $address1 = $data ( 3 );
-        $city = $data ( 4 );
-        $state = $data ( 5 );
-        $postal_code = strval($data ( 6 ));
-        $country_id = $data ( 7 );
-
-        $contact = $data ( 8 );
-        $email = $data ( 9 );
-        $first_name = $data ( 10 );
-        $last_name = $data ( 11 );
-        $phone = strval($data ( 12 ));
-
     $clientData = array (
-        'name' => $name,
-        'id_number' => $id_number,
-        'work_phone' => $work_phone,
-        'address1' => $address1,
-        'city' => $city,
-        'state' => $state,
-        'postal_code' => $postal_code,
-        'country_id' => $country_id,
+        'name' => $data [0],
+        'id_number' => strval($data[1]),
+        'work_phone' => strval($data [2]),
+        'address1' => $data[3],
+        'city' => $data [4],
+        'state' => $data [5],
+        'postal_code' => strval($data [6]),
+        'country_id' => [7],
 
-        'contact' => $contact,
-        'email' => $email,
-        'first_name' => $first_name,
-        'last_name' => $last_name,
-        'phone' => $phone
+        'contact' => $data[8],
+        'email' => $data [9],
+        'first_name' => $data [10],
+        'last_name' => $data [11],
+        'phone' => strval($data [12])
     );
     return $clientData;
 }
