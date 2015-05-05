@@ -55,19 +55,19 @@ function createClientArray($data) {
 
     $clientData = array (
         'name' => $data [0],
-        'id_number' => strval($data[1]),
-        'work_phone' => strval($data [2]),
+        'id_number' => $data[1],
+        'work_phone' => $data [2],
         'address1' => $data[3],
         'city' => $data [4],
         'state' => $data [5],
-        'postal_code' => strval($data [6]),
+        'postal_code' => $data [6],
         'country_id' => [7],
 
         'contact' => $data[8],
         'email' => $data [9],
         'first_name' => $data [10],
         'last_name' => $data [11],
-        'phone' => strval($data [12])
+        'phone' => $data [12]
     );
     return $clientData;
 }
