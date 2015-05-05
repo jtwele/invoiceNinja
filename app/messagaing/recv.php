@@ -25,9 +25,9 @@ $callback = function ($msg) {
 
     $data = explode(" ", $msg->body);
     echo var_dump($data);
-    $data = createClientArrray($data);
+    $data = clientArray($data);
     echo var_dump($data);
-    $data = createClientArrray($data);
+    $data = createClientArray($data);
     echo var_dump($data);
     for($i=0; $i < count($data); $i++){
         echo $data[$i]."\n";
