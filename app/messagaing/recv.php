@@ -1,42 +1,30 @@
 <?php
 require_once __DIR__ . '/libs/vendor/autoload.php';
-//require_once __DIR__ . '../libs/Ninja/Repositories/ClientRepository.php';
 require_once('/var/www/ninja/app/Ninja/Repositories/ClientRepository.php');
 use PhpAmqpLib\Connection\AMQPConnection;
-use App\Ninja\Repositories\ClientRepository;
-// Username: guest
-// password: guest
-//
-// �nderung (in der Konsole eingeben):
-// rabbitmqctl delete_user guest
-// rabbitmqctl add_user ninja steffens => bedeutet, dass username = ninja und pw = steffens
-//
-//
+use App\Ninja\Repositories\ClientRepository as Repo;
+
 // create connection
 echo'1. Datei geladen!!!';
 $connection = new AMQPConnection ( '141.22.29.97', '5672', 'invoice', 'invoice' ); // host = host auf dem der Broker l�uft
 $channel = $connection->channel ();
 echo'2. Channel erstellt!!!';
-
-$clientRepo = null;
-echo'3. ClientRepo wird gepr�ft!!!';
-if(is_null($clientRepo)){
-    echo'3.1 ClientRepo muss erstellt werden!!!';
-    $clientRepo = new ClientRepository();
-    echo'3.2 ClientRepo wurde erstellt!!!';
-}
 echo'4. declare messagequeue !!!';
 $channel->queue_declare ( 'invoice', false, false, false, false );
-
 echo ' 5. Waiting for messages. To exit press CTRL+C', "\n";
+
+
 
 // wait for messages
 $callback = function ($msg) {
-    $clientRepo = null;
-    if($clientRepo = null){
-        $clientRepo = new ClientRepository();
-    }
+    $clientRepo = new Repo();
     $data = explode(" ", $msg);
+    for($i=0; $i < count($data); $i++)
+    {
+        echo $data[$i]."<br>";
+    }
+
+
     $clientRepo->save(null, $data);
     echo " [x] Received ", $msg->body, "\n";
 };
@@ -50,6 +38,17 @@ while ( count ( $channel->callbacks ) ) {
 // close connection
 $channel->close ();
 $connection->close ();
+
+function getRepoInstance(){
+    //ClientRepository $clientRepo;
+    if(is_null($clientRepo)){
+        echo'3.1 ClientRepo muss erstellt werden!!!';
+        $clientRepo = new ClientRepository();
+        echo'3.2 ClientRepo wurde erstellt!!!';
+    }
+
+    return repo;
+}
 
 function createClientArrray($data) {
     $clientData = array (
