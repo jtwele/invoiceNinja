@@ -11,6 +11,7 @@ class EntityModel extends Eloquent
 
     public static function createNew($parent = false)
     {
+        echo'Class EntityModel: CreateNew()';
         $className = get_called_class();
         $entity = new $className();
 
@@ -21,6 +22,7 @@ class EntityModel extends Eloquent
             $entity->user_id = Auth::user()->id;
             $entity->account_id = Auth::user()->account_id;
         } else {
+            echo'EntityModel: CreateNew() -> Error';
             Utils::fatalError();
         }
 
