@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/libs/vendor/autoload.php';
-require '/var/www/ninja/public/index.php';
+//require '/var/www/ninja/public/index.php';
+require __DIR__.'/../../vendor/autoload.php';
 //require '/var/www/ninja/bootstrap/autoload.php';
 //require '/var/www/ninja/bootstrap/app.php';
 
