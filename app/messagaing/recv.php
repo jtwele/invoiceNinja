@@ -1,12 +1,9 @@
 <?php
 require_once __DIR__ . '/libs/vendor/autoload.php';
-require '/var/www/ninja/bootstrap/autoload.php';
-require '/var/www/ninja/bootstrap/app.php';
+require '/var/www/ninja/public/index.php';
+//require '/var/www/ninja/bootstrap/autoload.php';
+//require '/var/www/ninja/bootstrap/app.php';
 
-//foreach (glob("/var/www/ninja/vendor/composer/*.php") as $filename)
-//{
-//    require_once $filename;
-//}
 use PhpAmqpLib\Connection\AMQPConnection;
 use App\Ninja\Repositories\ClientRepository as Repo;
 
@@ -22,10 +19,7 @@ $callback = function ($msg) {
 
     $clientRepo = new Repo();
     $data = explode(" ", $msg->body);
-    echo '***********************************************';
     $data = createClientArray($data);
-    echo var_dump($data);
-    echo '***********************************************';
     $clientRepo->save(null, $data);
 };
 
@@ -38,18 +32,6 @@ while ( count ( $channel->callbacks ) ) {
 // close connection
 $channel->close ();
 $connection->close ();
-/*
-function getRepoInstance(ClientRepository $clientRepo){
-
-    if(is_null($clientRepo)){
-        echo'3.1 ClientRepo muss erstellt werden!!!';
-        $clientRepo = new ClientRepository();
-        echo'3.2 ClientRepo wurde erstellt!!!';
-    }
-
-    return repo;
-}
-*/
 
 
 function createClientArray($data) {
