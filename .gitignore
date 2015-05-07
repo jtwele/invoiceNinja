@@ -10,7 +10,7 @@
 
 /bootstrap/compiled.php
 /bootstrap/environment.php
-/vendor
+
 /node_modules
 .env
 .DS_Store
