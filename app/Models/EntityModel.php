@@ -14,22 +14,19 @@ class EntityModel extends Eloquent
         echo'Class EntityModel: CreateNew()';
         $className = get_called_class();
         $entity = new $className();
-
+        $parent = true;
         if ($parent) {
             $entity->user_id = $parent instanceof User ? $parent->id : $parent->user_id;
             $entity->account_id = $parent->account_id;
-            //  } elseif (Auth::check()) {
-        }else {
+        } elseif (Auth::check()) {
             echo ' EntitiyModel: createNew():    account zugewiesen';
-            $entity->user_id = '1';//Auth::user()->id;
-            $entity->account_id ='1';// Auth::user()->account_id;
-        }
-
-        /*else {
+            $entity->user_id = Auth::user()->id;
+            $entity->account_id = Auth::user()->account_id;
+        } {
             echo'EntityModel: CreateNew() -> Error';
             Utils::fatalError();
         }
-    */
+
         $lastEntity = $className::withTrashed()->scope(false, $entity->account_id)->orderBy('public_id', 'DESC')->first();
 
         if ($lastEntity) {
