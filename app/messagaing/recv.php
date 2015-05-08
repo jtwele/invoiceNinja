@@ -7,7 +7,8 @@ require __DIR__.'/../public/index.php';
 //require '/var/www/ninja/bootstrap/app.php';
 
 use PhpAmqpLib\Connection\AMQPConnection;
-use App\Ninja\Repositories\ClientRepository as Repo;
+use App\Ninja\Repositories\ClientRepository as ClientRepo;
+use App\Ninja\Repositories\AccountRepository as AccountRepo;
 
 // create connection
 
@@ -18,11 +19,16 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 // wait for messages
 $callback = function ($msg) {
-
-    $clientRepo = new Repo();
+/* createClient
+    $clientRepo = new ClientRepo();
     $data = explode(" ", $msg->body);
     $data = createClientArray($data);
     $clientRepo->save(null, $data);
+
+*/
+    $accountRepo = new AccountRepo();
+    $accountRepo->create("ninja", "ninja", "jeremias.twele@haw-hamburg.de", "ninja");
+
 };
 
 $channel->basic_consume ( 'invoice', '', false, true, false, false, $callback );
