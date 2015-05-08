@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Account extends Eloquent
 {
-
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-
 
     public function users()
     {

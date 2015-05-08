@@ -13,14 +13,14 @@ class EntityModel extends Eloquent
     {
         $className = get_called_class();
         $entity = new $className();
-        $parent = true;
+
         if ($parent) {
             $entity->user_id = $parent instanceof User ? $parent->id : $parent->user_id;
             $entity->account_id = $parent->account_id;
         } elseif (Auth::check()) {
             $entity->user_id = Auth::user()->id;
             $entity->account_id = Auth::user()->account_id;
-        } else{
+        } else {
             Utils::fatalError();
         }
 

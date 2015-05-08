@@ -19,10 +19,8 @@ class AccountRepository
 {
     public function create($firstName = '', $lastName = '', $email = '', $password = '')
     {
-        echo'AccountRepository->create()   wurde aufgerufen';
         $account = new Account();
-        echo 'AccountRepository: create() account_id = ' + $account->getID();
-        $account->ip = "141.22.29.96";//Request::getClientIp();
+        $account->ip = Request::getClientIp();
         $account->account_key = str_random(RANDOM_KEY_LENGTH);
 
         if (Session::has(SESSION_LOCALE)) {
