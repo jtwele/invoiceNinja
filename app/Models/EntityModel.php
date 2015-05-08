@@ -11,7 +11,6 @@ class EntityModel extends Eloquent
 
     public static function createNew($parent = false)
     {
-        echo'Class EntityModel: CreateNew()';
         $className = get_called_class();
         $entity = new $className();
         $parent = true;
@@ -19,11 +18,9 @@ class EntityModel extends Eloquent
             $entity->user_id = $parent instanceof User ? $parent->id : $parent->user_id;
             $entity->account_id = $parent->account_id;
         } elseif (Auth::check()) {
-            echo ' EntitiyModel: createNew():    account zugewiesen';
             $entity->user_id = Auth::user()->id;
             $entity->account_id = Auth::user()->account_id;
-        } {
-            echo'EntityModel: CreateNew() -> Error';
+        } else{
             Utils::fatalError();
         }
 
