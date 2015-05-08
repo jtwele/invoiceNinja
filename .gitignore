@@ -7,10 +7,10 @@
 /public/logo
 /public/build
 /public/packages
-
+/public/vendor
 /bootstrap/compiled.php
 /bootstrap/environment.php
-
+/vendor
 /node_modules
 .env
 .DS_Store
