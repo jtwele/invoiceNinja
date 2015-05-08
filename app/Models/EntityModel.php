@@ -18,14 +18,18 @@ class EntityModel extends Eloquent
         if ($parent) {
             $entity->user_id = $parent instanceof User ? $parent->id : $parent->user_id;
             $entity->account_id = $parent->account_id;
-        } elseif (Auth::check()) {
-            $entity->user_id = Auth::user()->id;
-            $entity->account_id = Auth::user()->account_id;
-        } else {
+            //  } elseif (Auth::check()) {
+        }else {
+            echo ' EntitiyModel: createNew():    account zugewiesen';
+            $entity->user_id = '1';//Auth::user()->id;
+            $entity->account_id ='1';// Auth::user()->account_id;
+        }
+
+        /*else {
             echo'EntityModel: CreateNew() -> Error';
             Utils::fatalError();
         }
-
+    */
         $lastEntity = $className::withTrashed()->scope(false, $entity->account_id)->orderBy('public_id', 'DESC')->first();
 
         if ($lastEntity) {
