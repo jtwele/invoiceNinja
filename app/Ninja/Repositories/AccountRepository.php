@@ -37,6 +37,7 @@ class AccountRepository
             $user->password = str_random(RANDOM_KEY_LENGTH);
             $user->email = $user->username = str_random(RANDOM_KEY_LENGTH);
         } else {
+            echo'AccountRepository()->Create()-> vor usercredentials setzen';
             $user->first_name = $firstName;
             $user->last_name = $lastName;
             echo'AccountRepository()->Create()->usercredentials setzen';
@@ -51,8 +52,9 @@ class AccountRepository
         if (!$user->confirmed) {
             $user->confirmation_code = str_random(RANDOM_KEY_LENGTH);
         }
-        echo'AccountRepository()->Create()->User gespeichert';
+        echo'AccountRepository()->Create()->speichern';
         $account->users()->save($user);
+        echo'AccountRepository()->Create()->User gespeichert';
 
         return $account;
     }
