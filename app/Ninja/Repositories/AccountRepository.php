@@ -35,10 +35,11 @@ class AccountRepository
         $user = new User();
         if (!$firstName && !$lastName && !$email && !$password) {
             $user->password = str_random(RANDOM_KEY_LENGTH);
-            //$user->email = $user->username = str_random(RANDOM_KEY_LENGTH);
+            $user->email = $user->username = str_random(RANDOM_KEY_LENGTH);
         } else {
             $user->first_name = $firstName;
             $user->last_name = $lastName;
+            echo'AccountRepository()->Create()->usercredentials setzen';
             $user->email = $user->username = $email;
             $user->password = bcrypt($password);
         }
