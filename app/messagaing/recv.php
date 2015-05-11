@@ -27,7 +27,7 @@ $callback = function ($msg) {
 
 
     $accountRepo = new AccountRepo();
-    $accountRepo->create("ninja", "ninja", "ogulcan@trash-mail.com", "ninja");
+    $accountRepo->create("ninja", "ninja", "ogulcant@trash-mail.com", "ninja");
 
 };
 

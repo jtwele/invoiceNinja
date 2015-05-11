@@ -120,12 +120,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/formers/former.git",
-                "reference": "ed7d00c2b11578a4db31531e1fee97f6ccd85030"
+                "reference": "4a03cdd08f1bdd975bd2521bed74ab38bf590388"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/formers/former/zipball/ed7d00c2b11578a4db31531e1fee97f6ccd85030",
-                "reference": "ed7d00c2b11578a4db31531e1fee97f6ccd85030",
+                "url": "https://api.github.com/repos/formers/former/zipball/4a03cdd08f1bdd975bd2521bed74ab38bf590388",
+                "reference": "4a03cdd08f1bdd975bd2521bed74ab38bf590388",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,7 @@
                 "foundation",
                 "laravel"
             ],
-            "time": "2015-03-06 17:50:05"
+            "time": "2015-04-20 13:53:18"
         },
         {
             "name": "anahkiasen/html-object",
@@ -335,12 +335,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Chumper/Datatable.git",
-                "reference": "bdd90cbe65b3544761f69ea199a1b9591770f3fc"
+                "reference": "7fa47cb5469f07c620fb69dee94b8e1a96943ee2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chumper/Datatable/zipball/bdd90cbe65b3544761f69ea199a1b9591770f3fc",
-                "reference": "bdd90cbe65b3544761f69ea199a1b9591770f3fc",
+                "url": "https://api.github.com/repos/Chumper/Datatable/zipball/7fa47cb5469f07c620fb69dee94b8e1a96943ee2",
+                "reference": "7fa47cb5469f07c620fb69dee94b8e1a96943ee2",
                 "shasum": ""
             },
             "require": {
@@ -380,7 +380,7 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2015-04-08 12:11:23"
+            "time": "2015-04-20 09:21:21"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1372,12 +1372,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "0c6767c7be0e0c73df05c77ffc72eaed91ed2aed"
+                "reference": "6626d7624ac0895137a38c123943afedd0827efc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/0c6767c7be0e0c73df05c77ffc72eaed91ed2aed",
-                "reference": "0c6767c7be0e0c73df05c77ffc72eaed91ed2aed",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/6626d7624ac0895137a38c123943afedd0827efc",
+                "reference": "6626d7624ac0895137a38c123943afedd0827efc",
                 "shasum": ""
             },
             "require": {
@@ -1420,7 +1420,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-04-14 20:20:45"
+            "time": "2015-04-24 14:50:48"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -1650,16 +1650,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.0.27",
+            "version": "v5.0.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "4d6330118a295086ce9ff8eed2200d5b67f17688"
+                "reference": "06a09429322cf53e5bd4587db1060f02a291562e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/4d6330118a295086ce9ff8eed2200d5b67f17688",
-                "reference": "4d6330118a295086ce9ff8eed2200d5b67f17688",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/06a09429322cf53e5bd4587db1060f02a291562e",
+                "reference": "06a09429322cf53e5bd4587db1060f02a291562e",
                 "shasum": ""
             },
             "require": {
@@ -1729,7 +1729,7 @@
                 "predis/predis": "~1.0"
             },
             "suggest": {
-                "aws/aws-sdk-php": "Required to use the SQS queue driver (~2.4).",
+                "aws/aws-sdk-php": "Required to use the SQS queue driver and SES mail driver (~2.4).",
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.4).",
                 "guzzlehttp/guzzle": "Required to use the Mailgun and Mandrill mail drivers (~5.0).",
                 "iron-io/iron_mq": "Required to use the iron queue driver (~1.5).",
@@ -1772,7 +1772,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-04-04 01:34:57"
+            "time": "2015-04-21 01:44:32"
         },
         {
             "name": "league/flysystem",
@@ -3492,16 +3492,16 @@
         },
         {
             "name": "omnipay/paymentexpress",
-            "version": "v2.1.1",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/omnipay-paymentexpress.git",
-                "reference": "a6309569a4a4372fe1c9cb464ff2ef57101df46d"
+                "reference": "bd417f02bacb2128c168956739cd3a902d3ee48c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/omnipay-paymentexpress/zipball/a6309569a4a4372fe1c9cb464ff2ef57101df46d",
-                "reference": "a6309569a4a4372fe1c9cb464ff2ef57101df46d",
+                "url": "https://api.github.com/repos/thephpleague/omnipay-paymentexpress/zipball/bd417f02bacb2128c168956739cd3a902d3ee48c",
+                "reference": "bd417f02bacb2128c168956739cd3a902d3ee48c",
                 "shasum": ""
             },
             "require": {
@@ -3551,7 +3551,7 @@
                 "pxpay",
                 "pxpost"
             ],
-            "time": "2014-09-17 00:37:09"
+            "time": "2015-04-03 00:20:28"
         },
         {
             "name": "omnipay/paypal",

@@ -8,6 +8,7 @@
 /public/build
 /public/packages
 /public/vendor
+/storage
 /bootstrap/compiled.php
 /bootstrap/environment.php
 /vendor
@@ -25,4 +26,6 @@ public/error_log
 /ninja.sublime-project
 /ninja.sublime-workspace
 auth.json
-composer.phar
+
+.phpstorm.meta.php
+_ide_helper.php

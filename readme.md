@@ -4,14 +4,26 @@
 
 If you'd like to use our code to sell your own invoicing app we have an affiliate program. Get in touch for more details.
 
+### Introduction
+
+To setup the site you can either use the [zip file](https://www.invoiceninja.com/knowledgebase/self-host/) (easier to run) or checkout the code from GitHub (easier to make changes).
+
+For updates follow [@invoiceninja](https://twitter.com/invoiceninja) or join the [Facebook Group](https://www.facebook.com/invoiceninja). For discussion of the code please use the [Google Group](https://groups.google.com/d/forum/invoiceninja).
+
+If you'd like to translate the site please use [caouecs/Laravel4-long](https://github.com/caouecs/Laravel4-lang) for the starter files.
+
+Developed by [@hillelcoren](https://twitter.com/hillelcoren) | Designed by [kantorp-wegl.in](http://kantorp-wegl.in/).
+
 ### Features
 
-* Core application built using Laravel 5
-* Invoice PDF generation directly in the browser
-* Integrates with many payment providers
+* Built using Laravel 5
+* Live PDF generation
+* Integrates with 30+ payment providers
 * Recurring invoices
 * Tax rates and payment terms
 * Multi-user support
+* Partial payments
+* Custom email templates
 * [Zapier](https://zapier.com/) integration
 * [D3.js](http://d3js.org/) visualizations
 
@@ -40,6 +52,7 @@ If you'd like to use our code to sell your own invoicing app we have an affiliat
 * [knockout/knockout](https://github.com/knockout/knockout) - Knockout makes it easier to create rich, responsive UIs with JavaScript
 * [rniemeyer/knockout-sortable](https://github.com/rniemeyer/knockout-sortable) - A Knockout.js binding to connect observableArrays with jQuery UI sortable functionality
 * [MrRio/jsPDF](https://github.com/MrRio/jsPDF) - Generate PDF files in JavaScript. HTML5 FTW.
+* [bpampuch/pdfmake](https://github.com/bpampuch/pdfmake) - Client/server side PDF printing in pure JavaScript
 * [FortAwesome/Font-Awesome](https://github.com/FortAwesome/Font-Awesome) - The iconic font designed for Bootstrap that works with twitter bootstrap
 * [Anahkiasen/former](https://github.com/Anahkiasen/former) - A powerful form builder, for Laravel and other frameworks (stand-alone too)
 * [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) - Laravel debugbar
