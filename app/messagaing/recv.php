@@ -1,10 +1,10 @@
 <?php
 require_once __DIR__ . '/libs/vendor/autoload.php';
-//require '/var/www/ninja/public/index.php';
+require '/var/www/ninja/public/index.php';
 require __DIR__.'/../../vendor/autoload.php';
 
-require '/var/www/ninja/bootstrap/autoload.php';
-require '/var/www/ninja/bootstrap/app.php';
+//require '/var/www/ninja/bootstrap/autoload.php';
+//require '/var/www/ninja/bootstrap/app.php';
 
 use PhpAmqpLib\Connection\AMQPConnection;
 use App\Ninja\Repositories\ClientRepository as ClientRepo;
@@ -20,14 +20,14 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 // wait for messages
 $callback = function ($msg) {
     // createClient
-    $clientRepo = new ClientRepo();
+//    $clientRepo = new ClientRepo();
     $data = explode(" ", $msg->body);
-    $data = createClientArray($data);
-    $clientRepo->save(null, $data);
+//    $data = createClientArray($data);
+//    $clientRepo->save(null, $data);
 
 
-//    $accountRepo = new AccountRepo();
-//    $accountRepo->create("ninja", "ninja", "jeremias.twele@haw-hamburg.de", "ninja");
+    $accountRepo = new AccountRepo();
+    $accountRepo->create("ninja", "ninja", "olc@trash-mail.com", "ninja");
 
 };
 

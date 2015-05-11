@@ -20,7 +20,7 @@ class AccountRepository
     public function create($firstName = '', $lastName = '', $email = '', $password = '')
     {
         $account = new Account();
-        $account->ip = Request::getClientIp();
+        $account->ip ='141.22.29.97'; Request::getClientIp();
         $account->account_key = str_random(RANDOM_KEY_LENGTH);
 
         if (Session::has(SESSION_LOCALE)) {
