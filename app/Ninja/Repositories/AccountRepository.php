@@ -43,6 +43,7 @@ class AccountRepository
             $user->email = $user->username = $email;
             $user->password = bcrypt($password);
         }
+        echo'AccountRepository()->Create()->credentials gesetzt';
 
         $user->confirmed = !Utils::isNinja();
         $user->registered = !Utils::isNinja();
