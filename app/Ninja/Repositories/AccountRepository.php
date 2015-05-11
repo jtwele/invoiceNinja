@@ -51,7 +51,7 @@ class AccountRepository
         if (!$user->confirmed) {
             $user->confirmation_code = str_random(RANDOM_KEY_LENGTH);
         }
-
+        echo'AccountRepository()->Create()->User gespeichert';
         $account->users()->save($user);
 
         return $account;
