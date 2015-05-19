@@ -47,28 +47,17 @@ function create_client() {
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"         ==> extra Header
 
-
-    echo'1. createClient wurde aufgerufen', "\n";
     $client_url = 'localhost/api/v1/clients';
     $ch = curl_init($client_url);
-    echo'2. createClient() url initialisiert', "\n";
     $curl_post_data = array(
         "name" => 'Testname',
-        "contact"=> '[email]:[testname@example.com]'
+        "contact"=> 'email : testname@example.com'
     );
-    echo'3. createClient() Array mit Kundendaten angelegt', "\n";
-
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    echo'4. createClient() erster header gesetzt ', "\n";
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
-    echo'5. createClient() zweiter header gesetzt', "\n";
     curl_setopt($ch, CURLOPT_POSTFIELDS, $curl_post_data);
-    echo'6. createClient() parameter gesetzt', "\n";
     curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_HTTPGET, false);
-    echo'7. createClient() fuehre curl Befehl durch', "\n";
     $output=curl_exec($ch);
-    echo'1. createClient() curl befehl durchgefuehrt', "\n";
     curl_close($ch);
 }
 
@@ -80,27 +69,17 @@ function create_invoice() {
     // -d '{"client_id":"1", "product_key":"ITEM"}'
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"
 
-    echo'1. create_invoice wurde aufgerufen', "\n";
     $invoice_url = 'localhost/api/v1/invoices';
     $ch = curl_init($invoice_url);
-    echo'2. create_invoice() url initialisiert', "\n";
     $curl_post_data = array(
         "client_id" => '1',
         "product_key" => '' //TODO: was ist ein product_key?
     );
-    echo'3. create_invoice() Array mit Kundendaten angelegt', "\n";
-
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    echo'4. create_invoice() erster header gesetzt ', "\n";
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
-    echo'5. create_invoice() zweiter header gesetzt', "\n";
     curl_setopt($ch, CURLOPT_POSTFIELDS, $curl_post_data);
-    echo'6. create_invoice() parameter gesetzt', "\n";
     curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_HTTPGET, false);
-    echo'7. create_invoice() fuehre curl Befehl durch', "\n";
     curl_exec($ch);
-    echo'1. create_invoice() curl befehl durchgefuehrt', "\n";
     curl_close($ch);
 }
 
@@ -113,7 +92,6 @@ function get_clients(){
     $client_url = 'localhost/api/v1/clients';
     $ch = curl_init($client_url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
-    curl_setopt($ch, CURLOPT_POST, false);
     curl_setopt($ch, CURLOPT_HTTPGET, true);
     $output=curl_exec($ch);
     curl_close($ch);
@@ -130,7 +108,6 @@ function get_invoices(){
     $invoice_url = 'localhost/api/v1/invoices';
     $ch = curl_init($invoice_url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
-    curl_setopt($ch, CURLOPT_POST, false);
     curl_setopt($ch, CURLOPT_HTTPGET, true);
     $output=curl_exec($ch);
     curl_close($ch);
