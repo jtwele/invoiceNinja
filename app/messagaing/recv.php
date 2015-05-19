@@ -1,15 +1,7 @@
 <?php
 require_once __DIR__ . '/libs/vendor/autoload.php';
-require '/var/www/ninja/public/index.php';
-require __DIR__.'/../../vendor/autoload.php';
-
-//require '/var/www/ninja/bootstrap/autoload.php';
-//require '/var/www/ninja/bootstrap/app.php';
 
 use PhpAmqpLib\Connection\AMQPConnection;
-use App\Ninja\Repositories\ClientRepository as ClientRepo;
-use App\Ninja\Repositories\AccountRepository as AccountRepo;
-
 // create connection
 
 $connection = new AMQPConnection ( '141.22.29.97', '5672', 'invoice', 'invoice' );
@@ -17,18 +9,12 @@ $channel = $connection->channel ();
 $channel->queue_declare ( 'invoice', false, false, false, false );
 echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
-// wait for messages
+
 $callback = function ($msg) {
-    // createClient
-//    $clientRepo = new ClientRepo();
-    $data = explode(" ", $msg->body);
-//    $data = createClientArray($data);
-//    $clientRepo->save(null, $data);
-
-
-    $accountRepo = new AccountRepo();
-    $accountRepo->create("ninja", "ninja", "ogulcant@trash-mail.com", "ninja");
-
+    $createClient = true;
+    if($createClient){
+        createClient();
+  }
 };
 
 $channel->basic_consume ( 'invoice', '', false, true, false, false, $callback );
@@ -41,6 +27,31 @@ while ( count ( $channel->callbacks ) ) {
 $channel->close ();
 $connection->close ();
 
+
+function createClient() {
+
+    //-X POST ninja.dev/api/v1/clients                              ==> die Methode
+    // -H "Content-Type:application/json"                           ==> Header
+    // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
+    // -H "X-Ninja-Token: TOKEN"                                    ==> extra Header
+
+    $service_url = 'localhost/api/v1/clients';
+    $ch = curl_init($service_url);
+    $curl_post_data = array(
+        "name" => 'name',
+        "contact"=> array(
+            "email" => 'name@example.com'
+        )
+
+    );
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: value'));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $curl_post_data);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPGET, false);
+    $output=curl_exec($ch);
+    curl_close($ch);
+}
 
 function createClientArray($data) {
 
