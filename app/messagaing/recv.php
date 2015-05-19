@@ -54,9 +54,7 @@ function create_client() {
     echo'2. createClient() url initialisiert', "\n";
     $curl_post_data = array(
         "name" => 'Testname',
-        "contact"=> array(
-            "email" => 'testname@example.com'
-        )
+        "contact"=> '[email]:[testname@example.com]'
     );
     echo'3. createClient() Array mit Kundendaten angelegt', "\n";
 
