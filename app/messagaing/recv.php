@@ -11,11 +11,22 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 
 $callback = function ($msg) {
-    $createClient = true;
-    if($createClient){
-	echo 'if bestanen', "\n";
+    $create_client = true;
+    $create_invoice = false;
+    $get_clients = false;
+    $get_invoices = false;
+
+    if($create_client){
+        create_client();
+    }elseif($get_clients){
         get_clients();
-  }
+    }elseif($create_invoice){
+        get_invoices();
+    }elseif($get_invoices){
+        get_invoices();
+    }else{
+        echo 'unbekannter Befehl';
+    }
 };
 
 $channel->basic_consume ( 'invoice', '', false, true, false, false, $callback );
@@ -29,7 +40,7 @@ $channel->close ();
 $connection->close ();
 
 
-function createClient() {
+function create_client() {
 
     //-X POST localhost/api/v1/clients                              ==> die Methode
     // -H "Content-Type:application/json"                           ==> Header
@@ -104,7 +115,7 @@ function get_clients(){
     $client_url = 'localhost/api/v1/clients';
     $ch = curl_init($client_url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
-    curl_setopt($ch, CURLOPT_POST, fasle);
+    curl_setopt($ch, CURLOPT_POST, false);
     curl_setopt($ch, CURLOPT_HTTPGET, true);
     $output=curl_exec($ch);
     curl_close($ch);
@@ -121,7 +132,7 @@ function get_invoices(){
     $invoice_url = 'localhost/api/v1/invoices';
     $ch = curl_init($invoice_url);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
-    curl_setopt($ch, CURLOPT_POST, fasle);
+    curl_setopt($ch, CURLOPT_POST, false);
     curl_setopt($ch, CURLOPT_HTTPGET, true);
     $output=curl_exec($ch);
     curl_close($ch);
