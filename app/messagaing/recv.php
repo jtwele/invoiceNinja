@@ -13,7 +13,8 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 $callback = function ($msg) {
     $createClient = true;
     if($createClient){
-        createClient();
+	echo 'if bestanen';
+	createClient();
   }
 };
 
@@ -35,8 +36,11 @@ function createClient() {
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: TOKEN"                                    ==> extra Header
 
+
+    echo'1. createClient wurde aufgerufen', "\n";
     $service_url = 'localhost/api/v1/clients';
     $ch = curl_init($service_url);
+    echo'2. createClient() url initialisiert', "\n";
     $curl_post_data = array(
         "name" => 'name',
         "contact"=> array(
@@ -44,12 +48,19 @@ function createClient() {
         )
 
     );
+    echo'3. createClient() Array mit Kundendaten angelegt', "\n";
+
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: value'));
+    echo'4. createClient() erster header gesetzt ', "\n";
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
+    echo'5. createClient() zweiter header gesetzt', "\n";
     curl_setopt($ch, CURLOPT_POSTFIELDS, $curl_post_data);
+    echo'6. createClient() parameter gesetzt', "\n";
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_HTTPGET, false);
+    echo'7. createClient() fuehre curl Befehl durch', "\n";
     $output=curl_exec($ch);
+    echo'1. createClient() curl befehl durchgefuehrt', "\n";
     curl_close($ch);
 }
 
