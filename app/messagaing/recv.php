@@ -51,7 +51,7 @@ function create_client() {
     $ch = curl_init($client_url);
     $curl_post_data = array(
         "name" => 'Testname',
-        "contact"=> 'email : testname@example.com'
+        "contact"=> 'email : [testname@example.com]'
     );
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
