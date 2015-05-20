@@ -21,7 +21,7 @@ $callback = function ($msg) {
     }elseif($get_clients){
         get_clients();
     }elseif($create_invoice){
-        create_invoices();
+        create_invoice();
     }elseif($get_invoices){
         get_invoices();
     }else{
