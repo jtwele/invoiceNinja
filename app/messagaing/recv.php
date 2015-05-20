@@ -49,7 +49,16 @@ function create_client() {
     $data = array(
         'name' => 'nameInPHPerstellt',
         'contact' => array(
-            'email' => 'emailInPHPerstellt@example.org'
+            'first_name' =>'Jeremias',
+            'last_name' =>'Twele',
+            'email' => 'jeremias.twele@haw-hamburg.de',
+            'phone'=>'04012345678'
+        ),
+        'adress' => array(
+            'street'=>'test Street',
+            'city'=>'Hamburg',
+            'postal_code'=>'20144',
+            'country'=>'germany'
         )
     );
 
