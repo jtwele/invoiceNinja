@@ -88,19 +88,36 @@ function create_invoice() {
 
     $invoice_url = 'localhost/api/v1/invoices';
     $ch = curl_init($invoice_url);
-    $curl_post_data = array(
-        "client_id" => '1',
+    $data = array(
+        "client_id" => '17',
         "product_key" => '4321', //TODO: was ist ein product_key?
         "description" => 'ersteRechnung mit PHP erstellt',
         "unit_cost" => '30.00',
         "quantity" => '3'
     );
+    $data_string = json_encode($data);
+
+    $context = stream_context_create(array(
+        'http' => array(
+            'method' => 'POST',
+            'header' => "Content-Type: application/json\r\n" . "Content-Length: " .
+                strlen($data_string) .
+                "\r\n"."X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6\r\n",
+            'content' => $data_string
+        )
+    ));
+
+    $result = file_get_contents('http://localhost/api/v1/invoices', false, $context);
+
+    /*
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
     curl_setopt($ch, CURLOPT_POSTFIELDS, $curl_post_data);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_exec($ch);
     curl_close($ch);
+
+    */
 }
 
 
