@@ -141,6 +141,35 @@ function get_invoices(){
 
 }
 
+function email_invoice(){
+
+    /*
+     * curl -X POST ninja.dev/api/v1/email_invoice
+     * -H "Content-Type:application/json"
+     * -d '{"id":1}'
+     * -H "X-Ninja-Token: TOKEN"
+     */
+    $data = array(
+        "id" => 'XXX' //TODO: ID angeben;
+    );
+
+    $data_string = json_encode($data);
+
+    $context = stream_context_create(array(
+        'http' => array(
+            'method' => 'POST',
+            'header' => "Content-Type:application/json\r\n" . "Content-Length: " .
+                strlen($data_string) .
+                "\r\n"."X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6\r\n",
+            'content' => $data_string
+        )
+    ));
+
+    $result = file_get_contents('ninja.dev/api/v1/email_invoice', false, $context);
+
+
+}
+
 function createClientArray($data) {
 
     $clientData = array (
