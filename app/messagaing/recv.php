@@ -80,12 +80,6 @@ $result = file_get_contents('http://localhost/api/v1/clients', false, $context);
 
 
 function create_invoice() {
-
-    //curl -X POST localhost/api/v1/invoices
-    // -H "Content-Type:application/json"
-    // -d '{"client_id":"1", "product_key":"ITEM"}'
-    // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"
-
 /*
     curl -X POST ninja.dev/api/v1/invoices
     -H "Content-Type:application/json"
@@ -94,10 +88,12 @@ function create_invoice() {
     */
     $data = array(
         "client_id" => '16',
+        invoice_items => array(
         "product_key" => '4321',
         "description" => 'ersteRechnung mit PHP erstellt',
         "unit_cost" => '50.00',
         "quantity" => '3'
+        )
     );
 
     $data_string = json_encode($data);
