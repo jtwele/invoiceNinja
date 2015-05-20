@@ -47,9 +47,9 @@ function create_client() {
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"         ==> extra Header
     $data = array(
-        'name' => 'Testname',
+        'name' => 'nameInPHPerstellt',
         'contact' => array(
-            'email' => 'test@example.org'
+            'email' => 'emailInPHPerstellt@example.org'
         )
     );
 
