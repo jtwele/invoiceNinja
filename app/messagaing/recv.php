@@ -86,8 +86,8 @@ function create_invoice() {
     // -d '{"client_id":"1", "product_key":"ITEM"}'
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"
 
-    $invoice_url = 'localhost/api/v1/invoices';
-    $ch = curl_init($invoice_url);
+   // $invoice_url = 'localhost/api/v1/invoices';
+   // $ch = curl_init($invoice_url);
     $data = array(
         "client_id" => '17',
         "product_key" => '4321', //TODO: was ist ein product_key?
