@@ -46,6 +46,28 @@ function create_client() {
     // -H "Content-Type:application/json"                           ==> Header
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"         ==> extra Header
+    $data = array(
+        'name' => 'Testname',
+        'contact' => array(
+            'email' => 'test@example.org'
+        )
+    );
+
+    $data_string = json_encode($data);
+
+    $context = stream_context_create(array(
+        'http' => array(
+            'method' => 'POST',
+            'header' => "Content-Type: application/json\r\n" . "Content-Length: " .
+                strlen($data_string) .
+                "\r\n"."X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6\r\n",
+        'content' => $data_string
+    )
+));
+
+$result = file_get_contents('http://localhost/api/v1/clients', false, $context);
+
+/* erster ansatz mit Curl
 
     $client_url = 'localhost/api/v1/clients';
     $ch = curl_init($client_url);
@@ -59,6 +81,8 @@ function create_client() {
     curl_setopt($ch, CURLOPT_POST, true);
     $output=curl_exec($ch);
     curl_close($ch);
+
+*/
 }
 
 
