@@ -90,7 +90,10 @@ function create_invoice() {
     $ch = curl_init($invoice_url);
     $curl_post_data = array(
         "client_id" => '1',
-        "product_key" => '' //TODO: was ist ein product_key?
+        "product_key" => '4321', //TODO: was ist ein product_key?
+        "description" => 'ersteRechnung mit PHP erstellt',
+        "unit_cost" => '30.00',
+        "quantity" => '3'
     );
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
