@@ -67,22 +67,6 @@ function create_client() {
 
 $result = file_get_contents('http://localhost/api/v1/clients', false, $context);
 
-/* erster ansatz mit Curl
-
-    $client_url = 'localhost/api/v1/clients';
-    $ch = curl_init($client_url);
-    $curl_post_data = array(
-        "name" => 'Testname',
-        "contact"=> '[email] : [testname@example.com]'
-    );
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $curl_post_data);
-    curl_setopt($ch, CURLOPT_POST, true);
-    $output=curl_exec($ch);
-    curl_close($ch);
-
-*/
 }
 
 
