@@ -89,10 +89,10 @@ function create_invoice() {
     $invoice_url = 'localhost/api/v1/invoices';
     $ch = curl_init($invoice_url);
     $data = array(
-        "client_id" => '17',
+        "client_id" => '16',
         "product_key" => '4321', //TODO: was ist ein product_key?
         "description" => 'ersteRechnung mit PHP erstellt',
-        "unit_cost" => '30.00',
+        "unit_cost" => '50.00',
         "quantity" => '3'
     );
 
