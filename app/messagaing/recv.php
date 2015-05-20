@@ -92,9 +92,6 @@ function create_invoice() {
     -d '{"client_id":"16", "product_key":"001"}'
     -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"
     */
-    echo "\r\n".'create_invoice() aufgerufen.'."\r\n";
-  //  $invoice_url = 'localhost/api/v1/invoices';
-  //  $ch = curl_init($invoice_url);
     $data = array(
         "client_id" => '16',
         "product_key" => '4321',
@@ -117,14 +114,6 @@ function create_invoice() {
 
     $result = file_get_contents('http://localhost/api/v1/invoices', false, $context);
 
-    /*
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_exec($ch);
-    curl_close($ch);
-    */
 }
 
 
