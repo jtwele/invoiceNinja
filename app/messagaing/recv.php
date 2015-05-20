@@ -85,7 +85,7 @@ function create_invoice() {
     // -H "Content-Type:application/json"
     // -d '{"client_id":"1", "product_key":"ITEM"}'
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"
-
+    echo '/r/n/create_invoice() aufgerufen.';
     $invoice_url = 'localhost/api/v1/invoices';
     $ch = curl_init($invoice_url);
     $data = array(
