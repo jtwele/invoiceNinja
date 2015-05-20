@@ -88,12 +88,10 @@ function create_invoice() {
     */
     $data = array(
         "client_id" => '16',
-        invoice_items => array(
         "product_key" => '4321',
         "description" => 'ersteRechnung mit PHP erstellt',
         "unit_cost" => '50.00',
         "quantity" => '3'
-        )
     );
 
     $data_string = json_encode($data);
