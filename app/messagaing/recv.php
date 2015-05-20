@@ -11,8 +11,8 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 
 $callback = function ($msg) {
-    $create_client = true;
-    $create_invoice = false;
+    $create_client = false;
+    $create_invoice = true;
     $get_clients = false;
     $get_invoices = false;
 
