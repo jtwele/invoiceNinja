@@ -54,12 +54,12 @@ function create_client() {
             'email' => 'jeremias.twele@haw-hamburg.de',
             'phone'=>'04012345678'
         ),
-        'adress' => array(
-            'street'=>'test Street',
-            'city'=>'Hamburg',
-            'postal_code'=>'20144',
-            'country'=>'germany'
-        )
+        'adress1'=>'test Street',
+        'city'=>'Hamburg',
+        'state' =>'Hamburg',
+        'postal_code'=>'20144',
+        'country'=>'germany'
+
     );
 
     $data_string = json_encode($data);
