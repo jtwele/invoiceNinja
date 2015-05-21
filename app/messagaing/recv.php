@@ -54,7 +54,7 @@ function create_client() {
             'email' => 'jeremias.twele@haw-hamburg.de',
             'phone'=>'04012345678'
         ),
-        'adress1'=>'test Street',
+        'address1'=>'test Street',
         'city'=>'Hamburg',
         'state' =>'Hamburg',
         'postal_code'=>'20144',
