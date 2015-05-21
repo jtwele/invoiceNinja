@@ -28,8 +28,8 @@ return [
 	|
 	*/
 
-	//'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-    'host' =>  'haw-mailer.haw-hamburg.de',
+	'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Port
@@ -54,8 +54,8 @@ return [
 	|
 	*/
 
-	//'from' => ['address' => env('MAIL_USERNAME'), 'name' => env('MAIL_FROM_NAME')],
-    'from' => 'HawaiCycle',
+	'from' => ['address' => env('MAIL_USERNAME'), 'name' => env('MAIL_FROM_NAME')],
+
 	/*
 	|--------------------------------------------------------------------------
 	| E-Mail Encryption Protocol
@@ -80,8 +80,8 @@ return [
 	|
 	*/
 
-	//'username' => env('MAIL_USERNAME'),
-    'username' => 'jeremias.twele@haw-hamburg.de',
+	'username' => env('MAIL_USERNAME'),
+
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Server Password
@@ -93,18 +93,18 @@ return [
 	|
 	*/
 
-	//'password' => env('MAIL_PASSWORD'),
-    'password' => '123Hunde',
-    /*
-    |--------------------------------------------------------------------------
-    | Sendmail System Path
-    |--------------------------------------------------------------------------
-    |
-    | When using the "sendmail" driver to send e-mails, we will need to know
-    | the path to where Sendmail lives on this server. A default path has
-    | been provided here, which will work well on most of your systems.
-    |
-    */
+	'password' => env('MAIL_PASSWORD'),
+
+	/*
+	|--------------------------------------------------------------------------
+	| Sendmail System Path
+	|--------------------------------------------------------------------------
+	|
+	| When using the "sendmail" driver to send e-mails, we will need to know
+	| the path to where Sendmail lives on this server. A default path has
+	| been provided here, which will work well on most of your systems.
+	|
+	*/
 
 	'sendmail' => '/usr/sbin/sendmail -bs',
 
