@@ -81,7 +81,7 @@ return [
 	*/
 
 	//'username' => env('MAIL_USERNAME'),
-    'username' => 'ogulcan.kurtul@haw-hamburg.de',
+    'username' => 'jeremias.twele@haw-hamburg.de',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Server Password
@@ -94,7 +94,7 @@ return [
 	*/
 
 	//'password' => env('MAIL_PASSWORD'),
-    'password' => 'ninja',
+    'password' => '123Hunde',
     /*
     |--------------------------------------------------------------------------
     | Sendmail System Path
