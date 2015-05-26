@@ -116,6 +116,9 @@ function create_invoice() {
 
 
 function find_client(){
+    $data = array(1,2,3,4,5);
+    echo "\n", '**************************************************', "\n";
+    echo count($data);
     $clients = get_clients();
         echo "\n", '**************************************************', "\n";
         echo count($clients);
