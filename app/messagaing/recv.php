@@ -131,10 +131,10 @@ function find_client($name, $last_name, $email){
 
          for($j = 0;$j< count($f_name); $j++){
              echo $j, ": ";
-              echo $f_name[$j];
+              echo $f_name[$j], "\n";
           }
 
-         
+
 
          // $l_name = explode(",", $a[7]);
          // $mail = explode(",", $a[8]);
