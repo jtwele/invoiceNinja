@@ -123,13 +123,22 @@ function find_client($name, $last_name, $email){
           echo "\n", '**************************************************';
           $client = explode(": [", $data[$i]);
           $a = explode(": ", $client[1]);
-          $f_name = explode(",", $a[6]);
+         // $f_name = explode(",", $a[6]);
+          $f_name = explode('"', $a[6]);
+          for($j = 0;$j< count($f_name); $j++){
+              echo $f_name[$j];
+          }
+
+
           $l_name = explode(",", $a[7]);
           $mail = explode(",", $a[8]);
           echo "\n", '**************************************************', "\n";
-          echo $f_name[0];
-          echo $l_name[0];
-          echo $mail[0];
+          if($f_name[0] == $name &&
+             $l_name[0] == $last_name &&
+             $email == $mail[0]){
+
+
+          }
           echo "\n", '**************************************************', "\n";
 /*
           if($a == $name && $a == $last_name && $a == $email){
