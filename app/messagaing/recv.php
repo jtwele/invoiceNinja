@@ -127,9 +127,9 @@ function find_client($name, $last_name, $email){
           $l_name = explode(",", $a[6]);
           $mail = explode(",", $a[7]);
           echo "\n", '**************************************************', "\n";
-          echo $f_name;
-          echo $l_name;
-          echo $mail;
+          echo $f_name[1];
+          echo $l_name[1];
+          echo $mail[1];
           echo "\n", '**************************************************', "\n";
 /*
           if($a == $name && $a == $last_name && $a == $email){
