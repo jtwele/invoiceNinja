@@ -15,10 +15,10 @@ $callback = function ($msg) {
     $get_ID = false;
 
     $create_client = false;
-    $create_invoice = true;
+    $create_invoice = false;
     $get_clients = false;
     $get_invoices = false;
-    $email_invoice = false;
+    $email_invoice = true;
 
     if($create_client){
         create_client();
