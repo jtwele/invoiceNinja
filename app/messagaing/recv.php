@@ -128,6 +128,12 @@ function find_client($name, $last_name, $email){
           $l_name = explode(",", $a[7]);
           $mail = explode(",", $a[8]);
           echo "\n", '**************************************************', "\n";
+
+          for($j = 0; $j<count($f_name);$j++){
+
+              echo $f_name[$j], "\n";
+          }
+          echo "\n", '**************************************************', "\n";
           echo $f_name[0], "\n";
           echo $l_name[0], "\n";
           echo $mail[0], "\n";
