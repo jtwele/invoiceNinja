@@ -195,7 +195,7 @@ function email_invoice(){
      * -H "X-Ninja-Token: TOKEN"
      */
     $data = array(
-        "id" => '21' //TODO: ID angeben;
+        "id" => '21'
     );
 
     $data_string = json_encode($data);
@@ -209,9 +209,7 @@ function email_invoice(){
             'content' => $data_string
         )
     ));
-
     $result = file_get_contents('http://localhost/api/v1/email_invoice', false, $context);
-
 
 }
 
