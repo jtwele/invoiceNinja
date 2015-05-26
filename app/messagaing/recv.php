@@ -12,7 +12,7 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 $callback = function ($msg) {
 
-    $find_client = true;
+    $get_ID = true;
 
     $create_client = false;
     $create_invoice = false;
@@ -27,8 +27,8 @@ $callback = function ($msg) {
         create_invoice();
     }elseif($get_invoices){
         get_invoices();
-    }elseif($find_client) {
-        find_client();
+    }elseif($get_ID) {
+        get_ID("Jeremias", "Twele", "jeremias@twele.net");
     }else{
         echo 'unbekannter Befehl';
     }
@@ -116,7 +116,8 @@ function create_invoice() {
 
 
 function get_ID($name, $last_name, $email){
-    $clients = get_clients();
+    $client_id = 0;
+        $clients = get_clients();
 
         $data = explode("},",$clients);
       for($i = 0; $i<count($data);$i++) {
@@ -136,10 +137,11 @@ function get_ID($name, $last_name, $email){
           echo "\n", '**************************************************', "\n";
 
           if ($f_name[0] == $name && $l_name[0] == $last_name && $mail[0] == $email) {
-
+              $client_id = $id[1];
+              break;
           }
       }
-
+    return $client_id;
 }
 
 function get_clients(){
