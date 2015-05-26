@@ -134,6 +134,7 @@ function get_clients(){
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
     curl_setopt($ch, CURLOPT_HTTPGET, true);
     $output=curl_exec($ch);
+
     curl_close($ch);
 
     return $output;
@@ -148,9 +149,10 @@ function get_invoices(){
 
     $invoice_url = 'localhost/api/v1/invoices';
     $ch = curl_init($invoice_url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6', CURLOPT_RETURNTRANSFER => 1));
     curl_setopt($ch, CURLOPT_HTTPGET, true);
     $output=curl_exec($ch);
+    echo $output;
     curl_close($ch);
 
 }
