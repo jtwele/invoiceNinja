@@ -130,15 +130,17 @@ function find_client($name, $last_name, $email){
           }
 
 
-          $l_name = explode(",", $a[7]);
-          $mail = explode(",", $a[8]);
+         // $l_name = explode(",", $a[7]);
+         // $mail = explode(",", $a[8]);
           echo "\n", '**************************************************', "\n";
+          /*
           if($f_name[0] == $name &&
              $l_name[0] == $last_name &&
              $email == $mail[0]){
 
 
           }
+          */
           echo "\n", '**************************************************', "\n";
 /*
           if($a == $name && $a == $last_name && $a == $email){
