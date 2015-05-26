@@ -124,7 +124,7 @@ function find_client(){
           $client = explode(": [", $data[$i]);
           $a = explode(": ", $client[1]);
           echo count($a);
-          for($i;i<count($a);$i++){
+          for($i;$i<count($a);$i++){
               echo $a[$i];
           }
 
