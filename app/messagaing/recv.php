@@ -119,9 +119,13 @@ function find_client(){
     $clients = get_clients();
         echo "\n", '**************************************************', "\n";
         $data = explode("},",$clients);
-      foreach($data as $client){
+      for($i = 0; $i<count($data);$i++){
           echo "\n", '**************************************************';
-          echo $client;
+          $client = explode(": [", $data);
+          echo $client [0];
+          echo "\n", '**************************************************';
+          echo $client[1];
+
           echo "\n", '**************************************************';
       }
     //:TODO client finden impln
