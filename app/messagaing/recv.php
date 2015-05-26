@@ -15,10 +15,10 @@ $callback = function ($msg) {
     $get_ID = false;
 
     $create_client = false;
-    $create_invoice = false;
+    $create_invoice = true;
     $get_clients = false;
     $get_invoices = false;
-    $email_invoice = true;
+    $email_invoice = false;
 
     if($create_client){
         create_client();
@@ -97,7 +97,7 @@ function create_invoice() {
     $data = array(
         "client_id" => '16',
         "product_key" => '1234',
-        "notes" => 'ersteRechnung mit PHP erstellt',
+        "notes" => 'zweiteRechnung mit PHP erstellt',
         "cost" => '50.00',
         "qty" => '3'
     );
