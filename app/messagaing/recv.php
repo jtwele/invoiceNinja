@@ -138,8 +138,8 @@ function find_client($name, $last_name, $email){
 
           echo "\n", '**************************************************', "\n";
           echo $f_name[1], "\n";
-          echo $l_name[0], "\n";
-          echo $mail[0], "\n";
+          echo $l_name[1], "\n";
+          echo $mail[1], "\n";
 
           /*
           if($f_name[0] == $name &&
