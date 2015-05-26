@@ -135,7 +135,9 @@ function get_clients(){
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6'));
     curl_setopt($ch, CURLOPT_HTTPGET, true);
     $output=curl_exec($ch);
+    echo "\n",'**************************************************', "\n";
     echo $output;
+    echo "\n",'**************************************************', "\n";
     curl_close($ch);
 
     return $output;
