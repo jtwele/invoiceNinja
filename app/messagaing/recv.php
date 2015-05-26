@@ -118,7 +118,7 @@ function create_invoice() {
 function find_client(){
     $clients = get_clients();
     echo "\n",'**************************************************', "\n";
-    print_r($clients);
+    var_dump($clients);
     echo "\n",'**************************************************';
     //:TODO client finden impln
 }
