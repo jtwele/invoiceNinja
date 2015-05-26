@@ -120,8 +120,8 @@ function find_client(){
     foreach($clients as $client) {
 
         echo "\n", '**************************************************', "\n";
-        echo $client;
-        echo "<br />";
+        echo $clients;
+
         echo "\n", '**************************************************';
     }
     //:TODO client finden impln
