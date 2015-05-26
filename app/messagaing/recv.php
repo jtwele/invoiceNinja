@@ -125,11 +125,8 @@ function find_client($name, $last_name, $email){
           $a = explode(": ", $client[1]);
 
           $f_name = explode('"', $a[6]);
+          echo $f_name;
           //$first_name = explode(",", $f_name[0]);
-          echo "\n", '****************************Hier soll jetzt ein name stehen**********************';
-          echo $f_name[0];
-          echo "\n", '**************************************************';
-
          /*
 
          for($j = 0;$j< count($f_name); $j++){
