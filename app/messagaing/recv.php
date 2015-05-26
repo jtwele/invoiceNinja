@@ -123,12 +123,20 @@ function find_client($name, $last_name, $email){
           echo "\n", '**************************************************';
           $client = explode(": [", $data[$i]);
           $a = explode(": ", $client[1]);
-         // $f_name = explode(",", $a[6]);
+
           $f_name = explode('"', $a[6]);
-          for($j = 0;$j< count($f_name); $j++){
+          $f_name = explode(",", $f_name);
+          echo "\n", '****************************Hier soll jetzt ein name stehen**********************';
+          echo $f_name[0];
+          echo "\n", '**************************************************';
+
+         /*
+
+         for($j = 0;$j< count($f_name); $j++){
               echo $f_name[$j];
           }
 
+         */
 
          // $l_name = explode(",", $a[7]);
          // $mail = explode(",", $a[8]);
