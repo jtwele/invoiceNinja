@@ -123,6 +123,7 @@ function find_client(){
           echo "\n", '**************************************************';
           $client = explode(": [", $data[$i]);
           $a = explode(": ", $client[1]);
+          echo count($a);
           echo $a[11];
 
           echo "\n", '**************************************************';
