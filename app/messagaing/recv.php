@@ -192,7 +192,7 @@ function email_invoice(){
      * -H "X-Ninja-Token: TOKEN"
      */
     $data = array(
-        "id" => 'XXX' //TODO: ID angeben;
+        "id" => '21' //TODO: ID angeben;
     );
 
     $data_string = json_encode($data);
