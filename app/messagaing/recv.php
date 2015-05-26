@@ -12,12 +12,13 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 $callback = function ($msg) {
 
-    $get_ID = true;
+    $get_ID = false;
 
     $create_client = false;
     $create_invoice = false;
     $get_clients = false;
     $get_invoices = false;
+    $email_invoice = true;
 
     if($create_client){
         create_client();
@@ -29,6 +30,8 @@ $callback = function ($msg) {
         get_invoices();
     }elseif($get_ID) {
         get_ID("Jeremias", "Twele", "jeremias@twele.net");
+    }elseif($email_invoice) {
+        email_invoice();
     }else{
         echo 'unbekannter Befehl';
     }
