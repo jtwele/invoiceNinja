@@ -210,7 +210,7 @@ function email_invoice(){
         )
     ));
 
-    $result = file_get_contents('ninja.dev/api/v1/email_invoice', false, $context);
+    $result = file_get_contents('http://localhost/api/v1/email_invoice', false, $context);
 
 
 }
