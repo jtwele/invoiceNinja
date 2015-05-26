@@ -115,12 +115,10 @@ function create_invoice() {
 }
 
 
-function find_client($name, $last_name, $email){
+function get_ID($name, $last_name, $email){
     $clients = get_clients();
-        echo "\n", '**************************************************', "\n";
         $data = explode("},",$clients);
       for($i = 0; $i<count($data);$i++){
-          echo "\n", '**************************************************';
           $client = explode(": [", $data[$i]);
           $a = explode(": ", $client[1]);
 
@@ -128,37 +126,19 @@ function find_client($name, $last_name, $email){
           $l_name = explode('"', $a[7]);
           $mail = explode('"', $a[8]);
           $id = explode('"', $a[11]);
-          /*
-      echo "\n", '**************************************************', "\n";
-
-      for($j = 0; $j<count($f_name);$j++){
-
-          echo $f_name[$j], "\n";
-      }
-      */
-
-          echo "\n", '**************************************************', "\n";
+          
           echo $f_name[1], "\n";
           echo $l_name[1], "\n";
           echo $mail[1], "\n";
           echo $id[1], "\n";
+          echo "\n", '**************************************************', "\n";
 
-          /*
           if($f_name[0] == $name &&
              $l_name[0] == $last_name &&
               $mail[0] ==$email ){
 
           }
-*/
-          echo "\n", '**************************************************', "\n";
-/*
-          if($a == $name && $a == $last_name && $a == $email){
 
-          }
-*/
-          echo "\n", '**************************************************';
-      }
-    //:TODO client finden impln
 }
 
 function get_clients(){
