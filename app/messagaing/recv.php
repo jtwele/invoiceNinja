@@ -115,7 +115,7 @@ function create_invoice() {
 }
 
 
-function find_client(){
+function find_client($name, $last_name, $email){
     $clients = get_clients();
         echo "\n", '**************************************************', "\n";
         $data = explode("},",$clients);
@@ -123,10 +123,17 @@ function find_client(){
           echo "\n", '**************************************************';
           $client = explode(": [", $data[$i]);
           $a = explode(": ", $client[1]);
-          echo count($a);
-          for($i;$i<count($a);$i++){
-              echo $i, "\n";
-              echo $a[$i], "\n";
+          $f_name = explode(",", $a[5]);
+          $l_name = explode(",", $a[6]);
+          $mail = explode(",", $a[7]);
+          echo "\n", '**************************************************', "\n";
+          echo $f_name;
+          echo $l_name;
+          echo $mail;
+          echo "\n", '**************************************************', "\n";
+
+          if($a == $name && $a == $last_name && $a == $email){
+
           }
 
           echo "\n", '**************************************************';
