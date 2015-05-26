@@ -137,7 +137,9 @@ function get_ID($name, $last_name, $email){
           echo "\n", '**************************************************', "\n";
 
           if ($f_name[0] == $name && $l_name[0] == $last_name && $mail[0] == $email) {
+              echo "client_id gefunden. ", "\n";
               $client_id = $id[1];
+              echo $client_id;
               break;
           }
       }
