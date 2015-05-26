@@ -131,11 +131,11 @@ function find_client($name, $last_name, $email){
           echo $l_name;
           echo $mail;
           echo "\n", '**************************************************', "\n";
-
+/*
           if($a == $name && $a == $last_name && $a == $email){
 
           }
-
+*/
           echo "\n", '**************************************************';
       }
     //:TODO client finden impln
