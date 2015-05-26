@@ -107,9 +107,16 @@ function create_invoice() {
     ));
 
     $result = file_get_contents('http://localhost/api/v1/invoices', false, $context);
-
 }
 
+
+function find_client(){
+    $clients = get_clients();
+    echo \n.'**************************************************';
+    echo $clients;
+    echo \n.'**************************************************';
+    //:TODO client finden impln
+}
 
 function get_clients(){
 
