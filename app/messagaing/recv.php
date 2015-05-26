@@ -118,10 +118,10 @@ function create_invoice() {
 function find_client(){
     $clients = get_clients();
         echo "\n", '**************************************************', "\n";
-        echo $clients;
+        echo count($clients);
 
         echo "\n", '**************************************************';
-    
+
     //:TODO client finden impln
 }
 
