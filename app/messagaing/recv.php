@@ -12,11 +12,11 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 $callback = function ($msg) {
 
-    $find_client = true;
+    $find_client = false;
 
     $create_client = false;
     $create_invoice = false;
-    $get_clients = false;
+    $get_clients = true;
     $get_invoices = false;
 
     if($create_client){
