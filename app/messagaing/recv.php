@@ -137,7 +137,7 @@ function get_ID($name, $last_name, $email){
           echo "\n", '**************************************************', "\n";
 
           echo $name, "\n";
-          echo $l_name, "\n";
+          echo $last_name, "\n";
           echo  $email,  "\n";
           if (strcmp($f_name[0], $name) && strcmp($l_name[0], $last_name) && strcmp($mail[0], $email)) {
               echo "client_id gefunden. ", "\n";
