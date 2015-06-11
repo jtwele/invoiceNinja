@@ -11,8 +11,7 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 
 $callback = function ($msg) {
-
-    $correlationID = $msg->get('correlation_id');
+    //$message_id = $msg->get('correlation_id');
     $data = explode(" ", $msg->body);
 
     $get_ID = false;
