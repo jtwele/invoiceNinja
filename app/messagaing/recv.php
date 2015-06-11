@@ -12,17 +12,17 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 $callback = function ($msg) {
 
-    $messageID = AMQPEnvelope::getMessageID();
-    echo '***************** ', $messageID, ' *****************';
+    $correlationID = $msg->get('correlation_id');
+    $data = explode(" ", $msg->body);
+
     $get_ID = false;
-    $create_client = false;
     $create_invoice = false;
     $get_clients = false;
     $get_invoices = false;
     $email_invoice = false;
 
-    if($create_client){
-        create_client();
+    if(strcmp($data[0], 'create')==0){
+        create_client($data);
     }elseif($get_clients){
         get_clients();
     }elseif($create_invoice){
@@ -49,25 +49,25 @@ $channel->close ();
 $connection->close ();
 
 
-function create_client() {
-
+function create_client($data) {
+    echo '***************create_client() aufgerufen************';
     //-X POST localhost/api/v1/clients                              ==> die Methode
     // -H "Content-Type:application/json"                           ==> Header
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"         ==> extra Header
     $data = array(
-        'name' => 'nameInPHPerstellt',
+        'name' => $data[1],
         'contact' => array(
-            'first_name' =>'Jeremias',
-            'last_name' =>'Twele',
-            'email' => 'jeremias.twele@haw-hamburg.de',
-            'phone'=>'04012345678'
+            'first_name' => $data[2],
+            'last_name' =>$data[3],
+            'email' => $data[4],
+            'phone'=>$data[5]
         ),
-        'address1'=>'test Street',
-        'city'=>'Hamburg',
-        'state' =>'Hamburg',
-        'postal_code'=>'20144',
-        'country'=>'germany'
+        'address1'=>$data[6],
+        'city'=>$data[7],
+        'state' =>$data[8],
+        'postal_code'=>$data[9],
+        'country'=>$data[10]
 
     );
 
