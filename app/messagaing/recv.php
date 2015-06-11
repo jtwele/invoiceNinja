@@ -48,25 +48,25 @@ $channel->close ();
 $connection->close ();
 
 
-function create_client($data) {
+function create_client($msg) {
     echo '***************create_client() aufgerufen************';
     //-X POST localhost/api/v1/clients                              ==> die Methode
     // -H "Content-Type:application/json"                           ==> Header
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"         ==> extra Header
     $data = array(
-        'name' => $data[1],
+        'name' => $msg[1],
         'contact' => array(
-            'first_name' => $data[2],
-            'last_name' =>$data[3],
-            'email' => $data[4],
-            'phone'=>$data[5]
+            'first_name' => $msg[2],
+            'last_name' =>$msg[3],
+            'email' => $msg[4],
+            'phone'=>$msg[5]
         ),
-        'address1'=>$data[6],
-        'city'=>$data[7],
-        'state' =>$data[8],
-        'postal_code'=>$data[9],
-        'country'=>$data[10]
+        'address1'=>$msg[6],
+        'city'=>$msg[7],
+        'state' =>$msg[8],
+        'postal_code'=>$msg[9],
+        'country'=>$msg[10]
 
     );
 
@@ -82,7 +82,7 @@ function create_client($data) {
     )
 ));
 
-$result = file_get_contents('http://localhost/api/v1/clients', false, $context);
+$result = file_get_contents('http://141.22.29.97/api/v1/clients', false, $context);
 
 }
 
