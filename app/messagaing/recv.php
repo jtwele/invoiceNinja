@@ -125,7 +125,9 @@ function create_invoice() {
 
 function get_ID($name, $last_name, $email){
     $client_id = 0;
+        echo 'get_ID() ruft get_clients() auf';
         $clients = get_clients();
+        echo '**********get_ID() hat get_clients() aufgerufne ***********';
 
         $data = explode("},",$clients);
       for($i = 0; $i<count($data);$i++) {
