@@ -12,7 +12,7 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 $callback = function ($msg) {
     //$message_id = $msg->get('correlation_id');
-   // $message = explode(" ", $msg->body);
+   $message = explode(" ", $msg->body);
 
     $get_ID = false;
     $create_invoice = false;
@@ -162,7 +162,7 @@ function get_clients(){
 
     // curl -X GET localhost/api/v1/clients
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"
-
+    echo '***************get_clients() aufgerufen************';
     $client_url = 'localhost/api/v1/clients';
     $ch = curl_init($client_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
