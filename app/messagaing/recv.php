@@ -54,7 +54,9 @@ function create_client($msg) {
     // -H "Content-Type:application/json"                           ==> Header
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"         ==> extra Header
-   /* $data = array(
+
+
+    $data = array(
         'name' => $msg[1],
         'contact' => array(
             'first_name' => $msg[2],
@@ -67,23 +69,6 @@ function create_client($msg) {
         'state' =>$msg[8],
         'postal_code'=>$msg[9],
         'country'=>$msg[10]
-
-    );
-*/
-    echo 'createClient()', $msg[1];
-    $data = array(
-        'name' => 'abc',
-        'contact' => array(
-            'first_name' => 'abc',
-            'last_name' =>'abc',
-            'email' => 'abc',
-            'phone'=>'abc'
-        ),
-        'address1'=>'abc',
-        'city'=>'abc',
-        'state' =>'abc',
-        'postal_code'=>'abc',
-        'country'=>'abc'
 
     );
 
@@ -100,7 +85,7 @@ function create_client($msg) {
     )
 ));
 
-$result = file_get_contents('http://141.22.29.97/api/v1/clients', false, $context);
+$result = file_get_contents('http://localhost/api/v1/clients', false, $context);
 
 }
 
