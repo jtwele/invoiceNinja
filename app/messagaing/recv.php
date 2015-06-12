@@ -15,9 +15,9 @@ $callback = function ($msg) {
    $message = explode(" ", $msg->body);
 
     $create_client = false;
-    $get_ID = false;
+    $get_ID = true;
     $create_invoice = false;
-    $get_clients = true;
+    $get_clients = false;
     $get_invoices = false;
     $email_invoice = false;
 
@@ -125,7 +125,7 @@ function create_invoice() {
 
 function get_ID($name, $last_name, $email){
     $client_id = 0;
-        $clients = 'jf jgjg jg jg jg jg jg jg jg jg jg jg jg jg jg jg jg';//get_clients();
+        $clients = get_clients();
 
         $data = explode("},",$clients);
       for($i = 0; $i<count($data);$i++) {
