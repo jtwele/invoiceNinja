@@ -15,12 +15,12 @@ $callback = function ($msg) {
    $message = explode(" ", $msg->body);
 
     $get_ID = false;
-    $create_invoice = false;
+    $create_invoice = true;
     $get_clients = false;
     $get_invoices = false;
     $email_invoice = false;
 
-    if(strcmp($message[0], 'create')==0){
+    if(false){//strcmp($message[0], 'create')==0){
         create_client($message);
     }elseif($get_clients){
         $cl=get_clients();
