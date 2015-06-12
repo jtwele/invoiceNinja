@@ -12,15 +12,16 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 $callback = function ($msg) {
     //$message_id = $msg->get('correlation_id');
-    $message = explode(" ", $msg->body);
+   // $message = explode(" ", $msg->body);
 
     $get_ID = false;
     $create_invoice = false;
-    $get_clients = false;
+    $get_clients = true;
     $get_invoices = false;
     $email_invoice = false;
 
-    if(strcmp($message[0], 'create')==0){
+    //if(strcmp($message[0], 'create')==0){
+    if(false){
         create_client($message);
     }elseif($get_clients){
         get_clients();
