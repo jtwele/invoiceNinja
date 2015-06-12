@@ -15,9 +15,9 @@ $callback = function ($msg) {
    $message = explode(" ", $msg->body);
 
     $create_client = false;
-    $get_ID = true;
+    $get_ID = false;
     $create_invoice = false;
-    $get_clients = false;
+    $get_clients = true;
     $get_invoices = false;
     $email_invoice = false;
 
@@ -26,6 +26,7 @@ $callback = function ($msg) {
         create_client($message);
     }elseif($get_clients){
         $cl=get_clients();
+        echo $cl;
     }elseif($create_invoice){
         create_invoice();
     }elseif($get_invoices){
