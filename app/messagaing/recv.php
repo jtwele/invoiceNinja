@@ -14,9 +14,9 @@ $callback = function ($msg) {
     //$message_id = $msg->get('correlation_id');
    $message = explode(" ", $msg->body);
 
-    $get_ID = false;
+    $get_ID = true;
     $create_invoice = false;
-    $get_clients = true;
+    $get_clients = false;
     $get_invoices = false;
     $email_invoice = false;
 
