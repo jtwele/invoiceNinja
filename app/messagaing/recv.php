@@ -15,12 +15,12 @@ $callback = function ($msg) {
    $message = explode(" ", $msg->body);
 
     $get_ID = false;
-    $create_invoice = true;
+    $create_invoice = false;
     $get_clients = false;
     $get_invoices = false;
     $email_invoice = false;
 
-    if(false){//strcmp($message[0], 'create')==0){
+    if(strcmp($message[0], 'create')==0){
         create_client($message);
     }elseif($get_clients){
         $cl=get_clients();
@@ -51,7 +51,7 @@ $connection->close ();
 
 function create_client($msg) {
     echo '***************create_client() aufgerufen************';
-    //-X POST localhost/api/v1/clients                              ==> die Methode
+    //-X POST localhost/api/v1/clients                          ==> die Methode
     // -H "Content-Type:application/json"                           ==> Header
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"         ==> extra Header
