@@ -171,7 +171,7 @@ function get_clients(){
     curl_setopt($ch, CURLOPT_HTTPGET, true);
     $output=curl_exec($ch);
     curl_close($ch);
-
+    echo '***************get_clients() ende************';
     return $output;
 }
 
