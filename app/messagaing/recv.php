@@ -125,7 +125,7 @@ function create_invoice() {
 
 function get_ID($name, $last_name, $email){
     $client_id = 0;
-        $clients = get_clients();
+        $clients = 'jf jgjg jg jg jg jg jg jg jg jg jg jg jg jg jg jg jg';//get_clients();
 
         $data = explode("},",$clients);
       for($i = 0; $i<count($data);$i++) {
