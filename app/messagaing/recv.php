@@ -14,15 +14,13 @@ $callback = function ($msg) {
     //$message_id = $msg->get('correlation_id');
    $message = explode(" ", $msg->body);
 
-    $create_client = false;
     $get_ID = false;
     $create_invoice = false;
-    $get_clients = true;
+    $get_clients = false;
     $get_invoices = false;
     $email_invoice = false;
 
-    //if(strcmp($message[0], 'create')==0){
-    if($create_client){
+    if(strcmp($message[0], 'create')==0){
         create_client($message);
     }elseif($get_clients){
         $cl=get_clients();
