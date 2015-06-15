@@ -81,7 +81,8 @@ function create_client($msg) {
             'method' => 'POST',
             'header' => "Content-Type: application/json\r\n" . "Content-Length: " .
                 strlen($data_string) .
-                "\r\n"."X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6\r\n",
+                "\r\n"."X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6\r\n".
+                "User-Agent:MyAgent/1.0\r\n",
         'content' => $data_string
     )
 ));
