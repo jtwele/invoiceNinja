@@ -56,7 +56,7 @@ function create_client($msg) {
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"         ==> extra Header
 
-/*
+
     $data = array(
         'name' => $msg[1],
         'contact' => array(
@@ -73,34 +73,26 @@ function create_client($msg) {
 
     );
 
+    /*
+            $data_string = json_encode($data);
 
-        $data_string = json_encode($data);
+            $context = stream_context_create(array(
+                'http' => array(
+                    'method' => 'POST',
+                    'header' => "Content-Type: application/json\r\n" . "Content-Length: " .
+                        strlen($data_string) .
+                        "\r\n"."X-Ninja-Token: urT0RJsvMDv3GiHIQqNHF6ej3VzVbWk1\r\n",
+                'content' => $data_string
+            )
+        ));
 
-        $context = stream_context_create(array(
-            'http' => array(
-                'method' => 'POST',
-                'header' => "Content-Type: application/json\r\n" . "Content-Length: " .
-                    strlen($data_string) .
-                    "\r\n"."X-Ninja-Token: urT0RJsvMDv3GiHIQqNHF6ej3VzVbWk1\r\n",
-            'content' => $data_string
-        )
-    ));
+        $result = file_get_contents('http://localhost/api/v1/clients', false, $context);
+        */
 
-    $result = file_get_contents('http://localhost/api/v1/clients', false, $context);
-    */
-
-    $client_url = 'localhost/api/v1/clients';
-    $ch = curl_init($client_url);
-
-    $data = array(
-        "name" => 'Testname',
-        "contact"=> '[email] : [testname@example.com]'
-    );
 
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: urT0RJsvMDv3GiHIQqNHF6ej3VzVbWk1'));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-type: multipart/form-data"));
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
     curl_setopt($ch, CURLOPT_POST, true);
     $output=curl_exec($ch);
     curl_close($ch);
