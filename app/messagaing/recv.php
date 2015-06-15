@@ -98,7 +98,7 @@ function create_client($msg) {
     );
 
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: 1234'));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: urT0RJsvMDv3GiHIQqNHF6ej3VzVbWk1'));
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_POST, true);
     $output=curl_exec($ch);
