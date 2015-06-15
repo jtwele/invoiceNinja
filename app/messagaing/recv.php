@@ -62,7 +62,7 @@ function create_client($msg) {
         'contact' => array(
             'first_name' => $msg[2],
             'last_name' =>$msg[3],
-            'email' => $msg[4],
+            'email' => "test@mail.com", //$msg[4],
             'phone'=>$msg[5]
         ),
         'address1'=>$msg[6],
