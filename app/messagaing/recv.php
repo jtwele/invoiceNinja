@@ -56,7 +56,7 @@ function create_client($msg) {
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"         ==> extra Header
 
-
+/*
     $data = array(
         'name' => $msg[1],
         'contact' => array(
@@ -72,7 +72,7 @@ function create_client($msg) {
         'country'=>$msg[10]
 
     );
-    /*
+
 
         $data_string = json_encode($data);
 
@@ -92,8 +92,13 @@ function create_client($msg) {
     $client_url = 'localhost/api/v1/clients';
     $ch = curl_init($client_url);
 
+    $data = array(
+        "name" => 'Testname',
+        "contact"=> '[email] : [testname@example.com]'
+    );
+
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: urT0RJsvMDv3GiHIQqNHF6ej3VzVbWk1'));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-Ninja-Token: 1234'));
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_POST, true);
     $output=curl_exec($ch);
