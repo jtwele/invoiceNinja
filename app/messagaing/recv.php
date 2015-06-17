@@ -12,7 +12,7 @@ echo ' ** Waiting for messages. To exit press CTRL+C **', "\n";
 
 $callback = function ($msg) {
     //$message_id = $msg->get('correlation_id');
-   $message = explode(" ", $msg->body);
+   $message = explode(", ", $msg->body);
 
     $get_ID = false;
     $create_invoice = false;
@@ -20,19 +20,10 @@ $callback = function ($msg) {
     $get_invoices = false;
     $email_invoice = false;
 
-    if(strcmp($message[0], 'create')==0){
+    if(strcmp($message[0], 'anlegen')==0){
         create_client($message);
-    }elseif($get_clients){
-        $cl=get_clients();
-        echo $cl;
-    }elseif($create_invoice){
-        create_invoice();
-    }elseif($get_invoices){
-        get_invoices();
-    }elseif($get_ID) {
-        get_ID("Jeremias", "Twele", "jeremias@twele.net");
-    }elseif($email_invoice) {
-        email_invoice();
+    }elseif(strcmp($message[0], 'rechnung')==0){
+        create_invoice($message);
     }else{
         echo 'unbekannter Befehl';
     }
@@ -56,6 +47,9 @@ function create_client($msg) {
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"         ==> extra Header
 
+    /*"create Firmenname2 "
+	+ "Vorname2 Nachname2 Mail@mail.com Telefon2 "
+	+ "Strasse2 Stadt2 Bundesland2 PLZ2 Land2" */
 
     $data = array(
         'name' => $msg[1],
@@ -73,22 +67,6 @@ function create_client($msg) {
 
     );
 
-    /*
-            $data_string = json_encode($data);
-
-            $context = stream_context_create(array(
-                'http' => array(
-                    'method' => 'POST',
-                    'header' => "Content-Type: application/json\r\n" . "Content-Length: " .
-                        strlen($data_string) .
-                        "\r\n"."X-Ninja-Token: urT0RJsvMDv3GiHIQqNHF6ej3VzVbWk1\r\n",
-                'content' => $data_string
-            )
-        ));
-
-        $result = file_get_contents('http://localhost/api/v1/clients', false, $context);
-        */
-
     $client_url = 'localhost/api/v1/clients';
     $ch = curl_init($client_url);
 
@@ -103,19 +81,22 @@ function create_client($msg) {
 }
 
 
-function create_invoice() {
+function create_invoice($message) {
 /*
     curl -X POST ninja.dev/api/v1/invoices
     -H "Content-Type:application/json"
     -d '{"client_id":"16", "product_key":"001"}'
     -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"
     */
+    //("companyName", "itemNr", "product", "price", "quantity")
+
+    $id = get_ID($message[1]);
     $data = array(
-        "client_id" => '16',
-        "product_key" => '1234',
-        "notes" => 'zweiteRechnung mit PHP erstellt',
-        "cost" => '50.00',
-        "qty" => '3'
+        "client_id" => $id,
+        "product_key" => $message[2],
+        "notes" => $message[3],
+        "cost" => $message[4],
+        "qty" => $message[5]
     );
 
     $data_string = json_encode($data);
@@ -134,7 +115,7 @@ function create_invoice() {
 }
 
 
-function get_ID($name, $last_name, $email){
+function get_ID($company_name){
     $client_id = 0;
         echo 'get_ID() ruft get_clients() auf';
         $clients = get_clients();
@@ -146,23 +127,23 @@ function get_ID($name, $last_name, $email){
           $a = explode(": ", $client[1]);
 
           $f_name = explode('"', $a[6]);
-          $l_name = explode('"', $a[7]);
-          $mail = explode('"', $a[8]);
+  //       $l_name = explode('"', $a[7]);
+  //       $mail = explode('"', $a[8]);
           $id = explode('"', $a[11]);
-
+/*
           echo "\n";
-          echo $f_name[1], "\n";
-          echo $l_name[1], "\n";
-          echo $mail[1], "\n";
+          echo $f_name[1], "\n"; //Firmenname
+          echo $l_name[1], "\n"; // nachname von Kontaktperson
+          echo $mail[1], "\n"; // Email der Kontaktperson
           echo $id[1], "\n";
           echo "\n", '**************************************************', "\n";
 
-          echo strcmp($f_name[1], $name),  "\n";
+          echo strcmp($f_name[1], $company_name),  "\n";
           echo strcmp($l_name[1], $last_name),  "\n";
           echo  strcmp($mail[1], $email),  "\n";
+*/
 
-
-          if (strcmp($f_name[1], $name) ==0 && strcmp($l_name[1], $last_name)==0 && strcmp($mail[1], $email)==0) {
+          if (strcmp($f_name[1], $company_name) ==0) {
               echo "client_id gefunden. ", "\n";
               $client_id = $id[1];
               echo $client_id;
