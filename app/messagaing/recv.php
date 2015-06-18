@@ -19,6 +19,7 @@ $callback = function ($msg) {
     $get_clients = false;
     $get_invoices = false;
     $email_invoice = false;
+    echo "Nachrichtenteyp: ", $message[0], "\n";
 
     if(strcmp($message[0], 'neu')==0){
         create_client($message);
