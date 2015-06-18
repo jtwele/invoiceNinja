@@ -128,7 +128,20 @@ function get_ID($company_name){
       for($i = 0; $i<count($data);$i++) {
           $client = explode(": [", $data[$i]);
           $a = explode(": ", $client[1]);
-          echo $a;
+          echo '**********************************************', "\r\n";
+          echo $a[0], "\r\n";
+          echo $a[1], "\r\n";
+          echo $a[2], "\r\n";
+          echo $a[3], "\r\n";
+          echo $a[4], "\r\n";
+          echo $a[5], "\r\n";
+          echo $a[6], "\r\n";
+          echo $a[7], "\r\n";
+          echo $a[8], "\r\n";
+          echo $a[9], "\r\n";
+          echo $a[10], "\r\n";
+          echo $a[11], "\r\n";
+          echo '**********************************************', "\r\n";
           $f_name = explode('"', $a[6]);
   //       $l_name = explode('"', $a[7]);
   //       $mail = explode('"', $a[8]);
