@@ -94,6 +94,7 @@ function create_invoice($message) {
     //("companyName", "itemNr", "product", "price", "quantity")
     echo "***************** create_invoice() aufgerufen ********", "\r\n";
     $id = get_ID($message[1]);
+    echo "id: ", $id, "\r\n";
     $data = array(
         "client_id" => $id,
         "product_key" => $message[2],
@@ -132,18 +133,16 @@ function get_ID($company_name){
   //       $l_name = explode('"', $a[7]);
   //       $mail = explode('"', $a[8]);
           $id = explode('"', $a[11]);
-/*
+
           echo "\n";
           echo $f_name[1], "\n"; //Firmenname
-          echo $l_name[1], "\n"; // nachname von Kontaktperson
-          echo $mail[1], "\n"; // Email der Kontaktperson
+       //   echo $l_name[1], "\n"; // nachname von Kontaktperson
+       //   echo $mail[1], "\n"; // Email der Kontaktperson
           echo $id[1], "\n";
           echo "\n", '**************************************************', "\n";
 
           echo strcmp($f_name[1], $company_name),  "\n";
-          echo strcmp($l_name[1], $last_name),  "\n";
-          echo  strcmp($mail[1], $email),  "\n";
-*/
+
 
           if (strcmp($f_name[1], $company_name) ==0) {
               echo "client_id gefunden. ", "\n";
