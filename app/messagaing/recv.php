@@ -128,6 +128,8 @@ function get_ID($company_name){
         $data = explode("},",$clients);
       for($i = 0; $i<count($data);$i++) {
           $client = explode(": [", $data[$i]);
+          echo "client[0]: ", $client[0], "\r\n";
+          echo "client[1]:", $client[1], "\r\n";
           $a = explode(": ", $client[1]);
           echo '**********************************************', "\r\n";
           echo $a[0], "\r\n";
