@@ -92,7 +92,7 @@ function create_invoice($message) {
     -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"
     */
     //("companyName", "itemNr", "product", "price", "quantity")
-
+    echo "***************** create_invoice() aufgerufen ********", "\r\n";
     $id = get_ID($message[1]);
     $data = array(
         "client_id" => $id,
@@ -113,8 +113,8 @@ function create_invoice($message) {
             'content' => $data_string
         )
     ));
-
     $result = file_get_contents('http://localhost/api/v1/invoices', false, $context);
+    echo "***************** create_invoice() ende ********", "\r\n";
 }
 
 
