@@ -158,12 +158,12 @@ function get_ID($company_name){
           echo $a[10], "\r\n";
           echo $a[11], "\r\n";
           echo '******************** ENDE inhalt aus client[1] **************************', "\r\n";
-          $name = explode('"', $b[3]);
+          $name = explode('"', $b[4]);
   //       $l_name = explode('"', $a[7]);
   //       $mail = explode('"', $a[8]);
           $id = explode('"', $a[11]);
 
-          echo "Firma: ", $name[1]," hat ID: ",$id[1], "\n";
+          echo "Firma: ", $name[0]," hat ID: ",$id[1], "\n";
        //   echo $l_name[1], "\n";
        //   echo $mail[1], "\n"; // Email der Kontaktperson
 
