@@ -128,15 +128,15 @@ function get_ID($company_name){
       for($i = 0; $i<count($data);$i++) {
           $client = explode(": [", $data[$i]);
           $a = explode(": ", $client[1]);
-
+          echo $a;
           $f_name = explode('"', $a[6]);
   //       $l_name = explode('"', $a[7]);
   //       $mail = explode('"', $a[8]);
           $id = explode('"', $a[11]);
 
           echo "\n";
-          echo $f_name[1], "\n"; //Firmenname
-       //   echo $l_name[1], "\n"; // nachname von Kontaktperson
+          echo $f_name[1], "\n";
+       //   echo $l_name[1], "\n";
        //   echo $mail[1], "\n"; // Email der Kontaktperson
           echo $id[1], "\n";
           echo "\n", '**************************************************', "\n";
