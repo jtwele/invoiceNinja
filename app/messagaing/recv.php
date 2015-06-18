@@ -123,16 +123,28 @@ function get_ID($company_name){
     $client_id = 0;
         $clients = get_clients();
         echo '********** get_ID() aufgerufen ***********', "\r\n";
-        echo $clients;
+
         echo"**************************************","\r\n";
         $data = explode("},",$clients);
       for($i = 0; $i<count($data);$i++) {
           $client = explode(": [", $data[$i]);
-          echo "client[0]: ", $client[0], "\r\n";
-          echo "client[1]:", $client[1], "\r\n";
           $a = explode(": ", $client[1]);
           $b = explode(": ", $client[0]);
           echo '********************** inhalt aus client[0] ************************', "\r\n";
+          echo $b[0], "\r\n";
+          echo $b[1], "\r\n";
+          echo $b[2], "\r\n";
+          echo $b[3], "\r\n";
+          echo $b[4], "\r\n";
+          echo $b[5], "\r\n";
+          echo $b[6], "\r\n";
+          echo $b[7], "\r\n";
+          echo $b[8], "\r\n";
+          echo $b[9], "\r\n";
+          echo $b[10], "\r\n";
+          echo $b[11], "\r\n";
+          echo '******************** ENDE inhalt aus client[0] **************************', "\r\n";
+          echo '********************** inhalt aus client[1] ************************', "\r\n";
           echo $a[0], "\r\n";
           echo $a[1], "\r\n";
           echo $a[2], "\r\n";
@@ -145,20 +157,17 @@ function get_ID($company_name){
           echo $a[9], "\r\n";
           echo $a[10], "\r\n";
           echo $a[11], "\r\n";
-          echo '******************** ENDE inhalt aus client[0] **************************', "\r\n";
+          echo '******************** ENDE inhalt aus client[1] **************************', "\r\n";
           $name = explode('"', $b[3]);
   //       $l_name = explode('"', $a[7]);
   //       $mail = explode('"', $a[8]);
           $id = explode('"', $a[11]);
 
-          echo "\n";
-          echo $name[1], "\n";
+          echo "Firma: ", $name[1]," hat ID: ",$id[1], "\n";
        //   echo $l_name[1], "\n";
        //   echo $mail[1], "\n"; // Email der Kontaktperson
-          echo $id[1], "\n";
-          echo "\n", '**************************************************', "\n";
 
-          echo strcmp($name[1], $company_name),  "\n";
+          echo "\n", '**************************************************', "\n";
 
 
           if (strcmp($name[1], $company_name) ==0) {
