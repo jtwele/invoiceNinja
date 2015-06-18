@@ -123,7 +123,8 @@ function get_ID($company_name){
     $client_id = 0;
         $clients = get_clients();
         echo '********** get_ID() aufgerufen ***********', "\r\n";
-
+        echo $clients;
+        echo"**************************************","\r\n";
         $data = explode("},",$clients);
       for($i = 0; $i<count($data);$i++) {
           $client = explode(": [", $data[$i]);
