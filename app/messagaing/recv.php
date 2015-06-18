@@ -130,7 +130,8 @@ function get_ID($company_name){
           $client = explode(": [", $data[$i]);
           echo "client[0]: ", $client[0], "\r\n";
           echo "client[1]:", $client[1], "\r\n";
-          $a = explode(": ", $client[0]);
+          $a = explode(": ", $client[1]);
+          $b = explode(": ", $client[0]);
           echo '********************** inhalt aus client[0] ************************', "\r\n";
           echo $a[0], "\r\n";
           echo $a[1], "\r\n";
@@ -145,22 +146,22 @@ function get_ID($company_name){
           echo $a[10], "\r\n";
           echo $a[11], "\r\n";
           echo '******************** ENDE inhalt aus client[0] **************************', "\r\n";
-          $f_name = explode('"', $a[6]);
+          $name = explode('"', $b[3]);
   //       $l_name = explode('"', $a[7]);
   //       $mail = explode('"', $a[8]);
-          $id = explode('"', $a[3]);
+          $id = explode('"', $a[11]);
 
           echo "\n";
-          echo $f_name[1], "\n";
+          echo $name[1], "\n";
        //   echo $l_name[1], "\n";
        //   echo $mail[1], "\n"; // Email der Kontaktperson
           echo $id[1], "\n";
           echo "\n", '**************************************************', "\n";
 
-          echo strcmp($f_name[1], $company_name),  "\n";
+          echo strcmp($name[1], $company_name),  "\n";
 
 
-          if (strcmp($f_name[1], $company_name) ==0) {
+          if (strcmp($name[1], $company_name) ==0) {
               echo "client_id gefunden. ", "\n";
               $client_id = $id[1];
               echo $client_id;
