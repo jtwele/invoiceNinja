@@ -20,7 +20,7 @@ $callback = function ($msg) {
     $get_invoices = false;
     $email_invoice = false;
 
-    if(strcmp($message[0], 'anlegen')==0){
+    if(strcmp($message[0], 'neu')==0){
         create_client($message);
     }elseif(strcmp($message[0], 'rechnung')==0){
         create_invoice($message);
