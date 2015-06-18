@@ -131,7 +131,7 @@ function get_ID($company_name){
           echo "client[0]: ", $client[0], "\r\n";
           echo "client[1]:", $client[1], "\r\n";
           $a = explode(": ", $client[0]);
-          echo '**********************************************', "\r\n";
+          echo '********************** inhalt aus client[0] ************************', "\r\n";
           echo $a[0], "\r\n";
           echo $a[1], "\r\n";
           echo $a[2], "\r\n";
@@ -144,7 +144,7 @@ function get_ID($company_name){
           echo $a[9], "\r\n";
           echo $a[10], "\r\n";
           echo $a[11], "\r\n";
-          echo '**********************************************', "\r\n";
+          echo '******************** ENDE inhalt aus client[0] **************************', "\r\n";
           $f_name = explode('"', $a[6]);
   //       $l_name = explode('"', $a[7]);
   //       $mail = explode('"', $a[8]);
