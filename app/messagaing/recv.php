@@ -41,7 +41,7 @@ $connection->close ();
 
 
 function create_client($msg) {
-    echo '***************create_client() aufgerufen************';
+    echo '*************** create_client() aufgerufen ************', "\r\n";
     //-X POST localhost/api/v1/clients                          ==> die Methode
     // -H "Content-Type:application/json"                           ==> Header
     // -d '{"name":"Client","contact":{"email":"test@gmail.com"}}'  ==> Parameter der Methode
@@ -78,6 +78,8 @@ function create_client($msg) {
     curl_setopt($ch, CURLOPT_POST, true);
     $output=curl_exec($ch);
     curl_close($ch);
+
+    echo '*************** create_client() ende ************', "\r\n";
 }
 
 
@@ -117,9 +119,8 @@ function create_invoice($message) {
 
 function get_ID($company_name){
     $client_id = 0;
-        echo 'get_ID() ruft get_clients() auf';
         $clients = get_clients();
-        echo '**********get_ID() hat get_clients() aufgerufne ***********';
+        echo '********** get_ID() aufgerufen ***********', "\r\n";
 
         $data = explode("},",$clients);
       for($i = 0; $i<count($data);$i++) {
@@ -150,6 +151,7 @@ function get_ID($company_name){
               break;
           }
       }
+    echo '********** get_ID() ende ***********', "\r\n";
     return $client_id;
 }
 
@@ -157,7 +159,7 @@ function get_clients(){
 
     // curl -X GET localhost/api/v1/clients
     // -H "X-Ninja-Token: GuTtJU276mbWvAQnpFrw0ylvkRkaq6H6"
-    echo '***************get_clients() aufgerufen************';
+    echo '*************** get_clients() aufgerufen ************', "\r\n";
     $client_url = 'localhost/api/v1/clients';
     $ch = curl_init($client_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -165,7 +167,7 @@ function get_clients(){
     curl_setopt($ch, CURLOPT_HTTPGET, true);
     $output=curl_exec($ch);
     curl_close($ch);
-    echo '***************get_clients() ende************';
+    echo '***************get_clients() ende************', "\r\n";
     return $output;
 }
 
