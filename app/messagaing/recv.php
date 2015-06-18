@@ -148,7 +148,7 @@ function get_ID($company_name){
           $f_name = explode('"', $a[6]);
   //       $l_name = explode('"', $a[7]);
   //       $mail = explode('"', $a[8]);
-          $id = explode('"', $a[11]);
+          $id = explode('"', $a[3]);
 
           echo "\n";
           echo $f_name[1], "\n";
