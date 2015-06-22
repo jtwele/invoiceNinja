@@ -94,6 +94,8 @@ function create_invoice($message)
         */
     //("companyName", "itemNr", "product", "price", "quantity")
     $id = get_ID($message[1]);
+
+
     echo 'menge: ',$message[5] ;
     $data = array(
         "client_id" => $id,
@@ -135,6 +137,14 @@ function get_ID($company_name)
             $client_id = $id[1];
             break;
         }
+    }
+    if($client_id == 0){
+        $client = array("", $company_name, "", $company_name, "", "");
+        create_client($client);
+        $client_id = get_ID($company_name);
+
+
+
     }
     return $client_id;
 }
