@@ -139,7 +139,7 @@ function get_ID($company_name)
         }
     }
     if($client_id == 0){
-        $client = array("", $company_name, "", $company_name, "", "");
+        $client = array("", $company_name, $company_name, "", "", "", "", "", "", "", "");
         create_client($client);
         $client_id = get_ID($company_name);
 
