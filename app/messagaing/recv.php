@@ -94,6 +94,7 @@ function create_invoice($message)
         */
     //("companyName", "itemNr", "product", "price", "quantity")
     $id = get_ID($message[1]);
+    echo 'vergebene ID ', $id;
     $data = array(
         "client_id" => $id,
         "product_key" => $message[2],
