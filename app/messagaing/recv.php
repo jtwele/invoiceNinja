@@ -132,6 +132,7 @@ function get_ID($company_name)
         $b = explode(": ", $client[0]);
         $name = explode('"', $b[4]);
         $id = explode('"', $a[11]);
+        echo'gefundener Firmenname: ', $name, "\r\n";
         if (strcmp($name[1], $company_name) == 0) {
             echo "client_id gefunden. ", $id[1], "\n";
             $client_id = $id[1];
@@ -142,10 +143,8 @@ function get_ID($company_name)
         $client = array("", $company_name, $company_name, "", "", "", "", "", "", "", "");
         create_client($client);
         $client_id = get_ID($company_name);
-
-
-
     }
+
     return $client_id;
 }
 
