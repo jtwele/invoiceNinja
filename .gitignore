@@ -7,10 +7,11 @@
 /public/logo
 /public/build
 /public/packages
-
+/public/vendor
+/storage
 /bootstrap/compiled.php
 /bootstrap/environment.php
-
+/vendor
 /node_modules
 .env
 .DS_Store
@@ -25,3 +26,6 @@ public/error_log
 /ninja.sublime-project
 /ninja.sublime-workspace
 auth.json
+
+.phpstorm.meta.php
+_ide_helper.php

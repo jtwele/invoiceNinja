@@ -34,8 +34,7 @@
         "fruitcakestudio/omnipay-sisow": "~2.0",
         "alfaproject/omnipay-skrill": "dev-master",
         "illuminate/html": "5.*",
-        "omnipay/bitpay": "dev-master",
-        "videlalvaro/php-amqplib": "2.2.*"
+        "omnipay/bitpay": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

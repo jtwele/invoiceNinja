@@ -1,11 +1,16 @@
 <?php namespace App\Models;
 
+use DateTime;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Invoice extends EntityModel
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+    protected $casts = [
+        'is_recurring' => 'boolean',
+    ];
 
     public function account()
     {
@@ -45,6 +50,17 @@ class Invoice extends EntityModel
     public function getName()
     {
         return $this->invoice_number;
+    }
+
+    public function getFileName()
+    {
+        $entityType = $this->getEntityType();
+        return trans("texts.$entityType") . '_' . $this->invoice_number . '.pdf';
+    }
+
+    public function getPDFPath()
+    {
+        return storage_path() . '/pdfcache/cache-' . $this->id . '.pdf';
     }
 
     public function getLink()

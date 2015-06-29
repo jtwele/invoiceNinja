@@ -47,9 +47,7 @@ class ClientRepository
 
     public function save($publicId, $data, $notify = true)
     {
-	echo'ClientRepository->save() wurde aufgerufen';   
-	   
-	 if (!$publicId || $publicId == "-1") {
+        if (!$publicId || $publicId == "-1") {
             $client = Client::createNew();
             $client->currency_id = 1;
             $contact = Contact::createNew();

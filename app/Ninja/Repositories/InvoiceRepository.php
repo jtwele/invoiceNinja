@@ -134,7 +134,7 @@ class InvoiceRepository
         }
 
         return $table->addColumn('due_date', function ($model) { return Utils::fromSqlDate($model->due_date); })
-        ->addColumn('invoice_status_name', function ($model) { return $model->quote_invoice_id ? link_to("invoices/{$model->quote_invoice_id}/edit", trans('texts.converted')) : $model->invoice_status_name; })
+        ->addColumn('invoice_status_name', function ($model) { return $model->quote_invoice_id ? link_to("invoices/{$model->quote_invoice_id}/edit", trans('texts.converted')) : self::getStatusLabel($model->invoice_status_id, $model->invoice_status_name); })
         ->addColumn('dropdown', function ($model) use ($entityType) {
 
             if ($model->is_deleted) {
@@ -185,6 +185,26 @@ class InvoiceRepository
                 </div>';
         })
         ->make();
+    }
+
+    private function getStatusLabel($statusId, $statusName) {
+        $label = trans("texts.{$statusName}");
+        $class = 'default';
+        switch ($statusId) {
+            case INVOICE_STATUS_SENT:
+                $class = 'info';
+                break;
+            case INVOICE_STATUS_VIEWED:
+                $class = 'warning';
+                break;
+            case INVOICE_STATUS_PARTIAL:
+                $class = 'primary';
+                break;
+            case INVOICE_STATUS_PAID:
+                $class = 'success';
+                break;
+        }
+        return "<h4><div class=\"label label-{$class}\">$statusName</div></h4>";
     }
 
     public function getErrors($input)
@@ -250,9 +270,12 @@ class InvoiceRepository
         $invoice->is_amount_discount = $data['is_amount_discount'] ? true : false;
         $invoice->invoice_number = trim($data['invoice_number']);
         $invoice->partial = round(Utils::parseFloat($data['partial']), 2);
-        $invoice->is_recurring = $data['is_recurring'] && !Utils::isDemo() ? true : false;
         $invoice->invoice_date = isset($data['invoice_date_sql']) ? $data['invoice_date_sql'] : Utils::toSqlDate($data['invoice_date']);
 
+        if (!$publicId) {
+            $invoice->is_recurring = $data['is_recurring'] && !Utils::isDemo() ? true : false;
+        }
+        
         if ($invoice->is_recurring) {
             $invoice->frequency_id = $data['frequency_id'] ? $data['frequency_id'] : 0;
             $invoice->start_date = Utils::toSqlDate($data['start_date']);
@@ -265,8 +288,8 @@ class InvoiceRepository
             $invoice->end_date = null;
         }
 
-        $invoice->terms = trim($data['terms']) ? trim($data['terms']) : ($account->invoice_terms ? $account->invoice_terms : '');
-        $invoice->invoice_footer = trim($data['invoice_footer']) ? trim($data['invoice_footer']) : $account->invoice_footer;
+        $invoice->terms = trim($data['terms']) ? trim($data['terms']) : (!$publicId && $account->invoice_terms ? $account->invoice_terms : '');
+        $invoice->invoice_footer = trim($data['invoice_footer']) ? trim($data['invoice_footer']) : (!$publicId && $account->invoice_footer ? $account->invoice_footer : '');
         $invoice->public_notes = trim($data['public_notes']);
         $invoice->po_number = trim($data['po_number']);
         $invoice->invoice_design_id = $data['invoice_design_id'];

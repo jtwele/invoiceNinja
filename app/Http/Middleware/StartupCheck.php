@@ -1,5 +1,6 @@
 <?php namespace app\Http\Middleware;
 
+use Request;
 use Closure;
 use Utils;
 use App;
@@ -10,6 +11,7 @@ use Cache;
 use Session;
 use Event;
 use App\Models\Language;
+use App\Models\InvoiceDesign;
 use App\Events\UserSettingsChanged;
 
 class StartupCheck
@@ -46,12 +48,13 @@ class StartupCheck
             'languages' => 'App\Models\Language',
             'paymentTerms' => 'App\Models\PaymentTerm',
             'paymentTypes' => 'App\Models\PaymentType',
+            'countries' => 'App\Models\Country',
         ];
         foreach ($cachedTables as $name => $class) {
             if (!Cache::has($name)) {
                 if ($name == 'paymentTerms') {
                     $orderBy = 'num_days';
-                } elseif (in_array($name, ['currencies', 'sizes', 'industries', 'languages'])) {
+                } elseif (in_array($name, ['currencies', 'sizes', 'industries', 'languages', 'countries'])) {
                     $orderBy = 'name';
                 } else {
                     $orderBy = 'id';
@@ -74,12 +77,12 @@ class StartupCheck
                     $data = @json_decode($file);
                 }
                 if ($data) {
-                    if ($data->version != NINJA_VERSION) {
+                    if (version_compare(NINJA_VERSION, $data->version, '<')) {
                         $params = [
-                    'user_version' => NINJA_VERSION,
-                    'latest_version' => $data->version,
-                    'releases_link' => link_to(RELEASES_URL, 'Invoice Ninja', ['target' => '_blank']),
-                  ];
+                            'user_version' => NINJA_VERSION,
+                            'latest_version' => $data->version,
+                            'releases_link' => link_to(RELEASES_URL, 'Invoice Ninja', ['target' => '_blank']),
+                        ];
                         Session::put('news_feed_id', NEW_VERSION_AVAILABLE);
                         Session::put('news_feed_message', trans('texts.new_version_available', $params));
                     } else {
@@ -123,7 +126,7 @@ class StartupCheck
             $licenseKey = Input::get('license_key');
             $productId = Input::get('product_id');
 
-            $data = trim(file_get_contents((Utils::isNinjaDev() ? 'http://ninja.dev' : NINJA_APP_URL)."/claim_license?license_key={$licenseKey}&product_id={$productId}"));
+            $data = trim(file_get_contents((Utils::isNinjaDev() ? 'http://www.ninja.dev' : NINJA_APP_URL)."/claim_license?license_key={$licenseKey}&product_id={$productId}"));
 
             if ($productId == PRODUCT_INVOICE_DESIGNS) {
                 if ($data = json_decode($data)) {

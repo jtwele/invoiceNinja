@@ -4,10 +4,6 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel {
-	
-	/**
-	 * Dies ist ein Test!
-	 */
 
 	/**
 	 * The Artisan commands provided by your application.
@@ -20,6 +16,7 @@ class Kernel extends ConsoleKernel {
 		'App\Console\Commands\ResetData',
 		'App\Console\Commands\ImportTimesheetData',
 		'App\Console\Commands\CheckData',
+        'App\Console\Commands\SendRenewalInvoices',
 	];
 
 	/**

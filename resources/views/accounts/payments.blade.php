@@ -4,7 +4,6 @@
 	@parent	
 
   {!! Former::open('gateways/delete')->addClass('user-form') !!}
-  {!! Former::legend(trans('texts.online_payments')) !!}
 
   <div style="display:none">
     {!! Former::text('accountGatewayPublicId') !!}
@@ -13,7 +12,7 @@
 
 
   @if ($showAdd)
-      {!! Button::success(trans('texts.add_gateway'))
+      {!! Button::primary(trans('texts.add_gateway'))
             ->asLinkTo('/gateways/create')
             ->withAttributes(['class' => 'pull-right'])
             ->appendIcon(Icon::create('plus-sign')) !!}

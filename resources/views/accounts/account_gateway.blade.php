@@ -6,7 +6,12 @@
     {!! Former::open($url)->method($method)->rule()->addClass('col-md-8 col-md-offset-2 warn-on-exit') !!} 
     {!! Former::populate($account) !!}
 
-    {!! Former::legend($title) !!}
+
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{!! trans($title) !!}</h3>
+    </div>
+    <div class="panel-body">
         
     @if ($accountGateway)
         {!! Former::populateField('payment_type_id', $paymentTypeId) !!}
@@ -76,7 +81,9 @@
             ->addGroupClass('gateway-option')
     !!}
 
-
+    </div>
+    </div>
+    
     <p/>&nbsp;<p/>
 
     {!! Former::actions( 

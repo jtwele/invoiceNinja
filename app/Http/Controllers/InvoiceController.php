@@ -10,7 +10,9 @@ use Redirect;
 use DB;
 use Event;
 use URL;
-
+use Datatable;
+use finfo;
+use Request;
 use App\Models\Invoice;
 use App\Models\Invitation;
 use App\Models\Client;
@@ -25,7 +27,6 @@ use App\Models\PaymentTerm;
 use App\Models\InvoiceDesign;
 use App\Models\AccountGateway;
 use App\Models\Activity;
-
 use App\Ninja\Mailers\ContactMailer as Mailer;
 use App\Ninja\Repositories\InvoiceRepository;
 use App\Ninja\Repositories\ClientRepository;
@@ -180,6 +181,15 @@ class InvoiceController extends BaseController
 
         if (!$client || $client->is_deleted) {
             return View::make('invoices.deleted');
+        }
+
+        if ($account->subdomain) {
+            $server = explode('.', Request::server('HTTP_HOST'));
+            $subdomain = $server[0];
+
+            if (!in_array($subdomain, ['app', 'www']) && $subdomain != $account->subdomain) {
+                return View::make('invoices.deleted');
+            }
         }
 
         if (!Session::has($invitationKey) && (!Auth::check() || Auth::user()->account_id != $invoice->account_id)) {
@@ -438,13 +448,12 @@ class InvoiceController extends BaseController
                 $url = URL::to('clients/'.$client->public_id);
                 Utils::trackViewed($client->getDisplayName(), ENTITY_CLIENT, $url);
             }
-            
-            /*
-            This causes an error message. Commenting out. will return later.
-            if (!empty(Input::get('pdfupload')) && strpos(Input::get('pdfupload'), 'data:application/pdf;base64,') === 0) {
-                $this->storePDF(Input::get('pdfupload'), $invoice->id);
+
+            $pdfUpload = Input::get('pdfupload');
+            if (!empty($pdfUpload) && strpos($pdfUpload, 'data:application/pdf;base64,') === 0) {
+                $this->storePDF(Input::get('pdfupload'), $invoice);
             }
-            */
+
             if ($action == 'clone') {
                 return $this->cloneInvoice($publicId);
             } elseif ($action == 'convert') {
@@ -588,17 +597,9 @@ class InvoiceController extends BaseController
         return View::make('invoices.history', $data);
     }
     
-    private function storePDF($encodedString, $invoiceId)
+    private function storePDF($encodedString, $invoice)
     {
-        $uploadsDir = storage_path().'/pdfcache/';
         $encodedString = str_replace('data:application/pdf;base64,', '', $encodedString);
-        $name = 'cache-'.$invoiceId.'.pdf';
-        
-        if (file_put_contents($uploadsDir.$name, base64_decode($encodedString)) !== false) {
-            $finfo = new finfo(FILEINFO_MIME);
-            if ($finfo->file($uploadsDir.$name) !== 'application/pdf; charset=binary') {
-                unlink($uploadsDir.$name);
-            }
-        }
+        file_put_contents($invoice->getPDFPath(), base64_decode($encodedString));
     }
 }
